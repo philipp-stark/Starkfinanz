@@ -1342,8 +1342,8 @@
             .app-inner .app-buttons { justify-content: center; }
             .phone { margin: 0 auto; }
 
-            .footer-main { grid-template-columns: 1fr; gap: 2.25rem; padding-bottom: 2rem; }
-            .footer-cols-right { justify-content: flex-start; }
+            .footer-main { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0 2rem; }
+            .footer-cols-right { flex-direction: column; justify-content: flex-start; gap: 2rem; }
         }
 
         @media (max-width: 768px) {
@@ -1354,9 +1354,13 @@
             /* Hide all <br> in headlines — let text wrap naturally */
             .section-headline br,
             .hero-headline br,
-            .app-headline br,
             .about-headline br,
             .subline-text br { display: none; }
+
+            /* Keep <br> in app headline */
+            #app-section { padding: 5rem 5%; }
+            .app-sub { margin-bottom: 2.5rem; }
+            .app-buttons { margin-top: 1rem; }
 
             /* Section padding */
             #subline, #intro, #situation, #leistungen, #ablauf,
@@ -1409,8 +1413,17 @@
             .app-inner > div { padding-bottom: 0; }
 
             /* Footer */
-            .footer-legal { gap: 0.5rem; flex-wrap: wrap; }
-            .footer-legal a { font-size: 0.7rem; }
+            .footer-main { padding: 2.5rem 0 1.5rem; }
+            .footer-tagline br { display: block; }
+            .footer-bottom-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+                padding: 1.25rem 0;
+            }
+            .footer-legal { gap: 0.6rem; flex-wrap: wrap; }
+            .footer-legal a { font-size: 0.775rem; }
+            .footer-copy { white-space: normal; }
         }
     </style>
 </head>
