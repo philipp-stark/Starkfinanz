@@ -1415,7 +1415,7 @@
             .subline-text br { display: none; }
 
             /* Hero layout on mobile */
-            .hero-headline { font-size: clamp(2.2rem, 10.5vw, 3.2rem); letter-spacing: -0.03em; }
+            .hero-headline { font-size: clamp(2.6rem, 12.5vw, 3.8rem); letter-spacing: -0.03em; }
             .hero-headline-block { max-width: 100%; padding: 0 1%; }
             .hero-sub { font-size: 0.9rem; }
 
@@ -1432,9 +1432,19 @@
 
             /* Section padding — 7% horizontal for tighter content width */
             #subline, #intro, #situation, #leistungen, #ablauf,
-            #zahlen, #faq, #cta { padding: 4rem 7%; }
+            #zahlen, #faq, #cta { padding: 4rem 7%; text-align: center; }
             #app-section { padding: 5rem 7%; }
             nav { padding: 0 7%; }
+
+            /* Center all section content on mobile */
+            .section-label { text-align: center; }
+            .section-headline { text-align: center; }
+            .situation-grid, .leistungen-grid, .zahlen-grid { text-align: left; }
+            .about-text-col { text-align: center; }
+            .about-headline { text-align: center; }
+            .subline-text { text-align: center; }
+            .faq-item { text-align: left; }
+            #cta { text-align: center; }
 
             /* Hero */
             .hero-text { padding: 3.5rem 0; }
