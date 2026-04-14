@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Stark Finanz — Finanzberatung für Ärzte und medizinische Fachkräfte in Deutschland. Kein Fachwissen nötig, kein Druck, kein Produktverkauf.">
     <title>Stark Finanz — Finanzberatung für medizinische Fachkräfte</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -187,6 +187,66 @@
         .nav-logo img {
             height: 34px;
             width: auto;
+        }
+
+        /* ─── BURGER MENU ────────────────────────── */
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 36px;
+            height: 36px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            z-index: 201;
+        }
+
+        .burger span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            border-radius: 2px;
+            background: var(--white);
+            transition: background 0.3s, transform 0.3s, opacity 0.3s;
+        }
+
+        nav.scrolled .burger span,
+        nav.burger-open .burger span {
+            background: var(--navy);
+        }
+
+        .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.open span:nth-child(2) { opacity: 0; }
+        .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 66px;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 5%;
+            flex-direction: column;
+            gap: 0.75rem;
+            z-index: 199;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu .btn {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+            padding: 0.85rem 1rem;
+            font-size: 0.9rem;
         }
 
         /* ─── HERO ───────────────────────────────── */
@@ -1286,26 +1346,69 @@
             .footer-cols-right { justify-content: flex-start; }
         }
 
-        @media (max-width: 560px) {
-            #subline { padding: 4rem 5%; }
-            #intro { padding: 4rem 5%; }
-            #situation, #leistungen, #ablauf, #zahlen,
-            #ueber-mich, #faq, #cta { padding: 4rem 5%; }
+        @media (max-width: 768px) {
+            /* Burger: hide desktop buttons, show burger */
+            .nav-actions { display: none; }
+            .burger { display: flex; }
+
+            /* Hide all <br> in headlines — let text wrap naturally */
+            .section-headline br,
+            .hero-headline br,
+            .app-headline br,
+            .about-headline br,
+            .subline-text br { display: none; }
+
+            /* Section padding */
+            #subline, #intro, #situation, #leistungen, #ablauf,
+            #zahlen, #ueber-mich, #faq, #cta { padding: 4rem 5%; }
             #app-section { padding: 4rem 5%; }
 
+            /* Hero */
+            .hero-text { padding: 3.5rem 0; }
+            .hero-eyebrow {
+                font-size: 0.85rem;
+                letter-spacing: 0.06em;
+                margin-bottom: 1.5rem;
+                white-space: normal;
+            }
+
+            /* Section headlines bigger on mobile */
+            .section-headline { font-size: clamp(1.7rem, 6vw, 2.4rem); }
+
+            /* Grids */
             .situation-grid { grid-template-columns: 1fr; }
             .leistungen-grid { grid-template-columns: 1fr; }
             .zahlen-grid { grid-template-columns: 1fr; }
 
-            .hero-text { padding: 3.5rem 0; }
+            /* Intro text */
+            .intro-text { font-size: 1.15rem; line-height: 1.5; }
 
-            .nav-actions .btn { padding: 0.35rem 0.75rem; font-size: 0.75rem; }
+            /* Über uns: text first, image below, flush with next section */
+            #ueber-mich { overflow: hidden; }
+            .about-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto;
+            }
+            .about-photo {
+                order: 2;
+                padding: 0;
+                margin-top: 0;
+                align-self: end;
+                justify-content: center;
+            }
+            .about-photo img {
+                width: 75%;
+                max-width: 320px;
+                display: block;
+                margin: 0 auto;
+            }
+            .about-text-col { order: 1; padding: 4rem 5% 2rem; }
 
-            .intro-text { font-size: 1.1rem; line-height: 1.5; }
+            /* App section spacing */
+            .app-inner { gap: 2.5rem; }
+            .app-inner > div { padding-bottom: 0; }
 
-            .about-text-col { padding: 2.5rem 5%; }
-            .about-photo img { max-width: 100%; }
-
+            /* Footer */
             .footer-legal { gap: 0.5rem; flex-wrap: wrap; }
             .footer-legal a { font-size: 0.7rem; }
         }
@@ -1322,7 +1425,15 @@
         <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn btn--navy-outline" target="_blank" rel="noopener">Kundenportal</a>
         <a href="https://kontaktformular-gules.vercel.app" class="btn btn--navy">Gespräch vereinbaren</a>
     </div>
+    <button class="burger" id="burger-btn" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+    </button>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+    <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn btn--navy-outline" target="_blank" rel="noopener">Kundenportal</a>
+    <a href="https://kontaktformular-gules.vercel.app" class="btn btn--navy">Gespräch vereinbaren</a>
+</div>
 
 <!-- ─── HERO ─────────────────────────────────────── -->
 <section id="hero">
@@ -1823,6 +1934,24 @@
             heroHeadline.style.opacity = '1';
         }, 500);
     }, 7000);
+
+    // burger menu
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (burgerBtn && mobileMenu) {
+        burgerBtn.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.toggle('open');
+            burgerBtn.classList.toggle('open', isOpen);
+            document.querySelector('nav').classList.toggle('burger-open', isOpen);
+        });
+        mobileMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                burgerBtn.classList.remove('open');
+                document.querySelector('nav').classList.remove('burger-open');
+            });
+        });
+    }
 
     // nav transparency
     const navEl = document.querySelector('nav');
