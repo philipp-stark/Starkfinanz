@@ -330,6 +330,7 @@
             max-width: 1100px;
             position: relative;
             z-index: 1;
+            padding-top: 8rem;
         }
 
         .hero-bottom { display: none; }
@@ -342,78 +343,30 @@
             text-align: center;
         }
 
-        .hero-eyebrow {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent-l);
-            margin-bottom: 2.5rem;
-        }
-
-        /* ─── HERO HEADLINE ROTATOR ──────────────── */
-
         .hero-headline-block {
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0;
+            max-width: 1060px;
         }
 
-        .hero-fixed {
-            font-size: clamp(1.8rem, 3.8vw, 3.2rem);
-            font-weight: 700;
-            color: rgba(255,255,255,0.82);
-            line-height: 1.25;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-rotating-wrap {
-            overflow: hidden;
-            height: clamp(7.5rem, 14vw, 13rem);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 0.5rem;
-            margin: 0.1rem 0;
-        }
-
-        .hero-rotating-word {
-            display: block;
-            font-size: clamp(4.5rem, 11vw, 9.5rem);
+        .hero-headline {
+            font-size: clamp(2.6rem, 5.8vw, 5rem);
             font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1;
             color: var(--white);
-            text-shadow: 0 2px 60px rgba(255,255,255,0.12);
-            will-change: transform, opacity;
-        }
-
-        .hero-rotating-word.exit {
-            animation: wordExit 0.45s cubic-bezier(0.4, 0, 0.6, 1) forwards;
-        }
-
-        .hero-rotating-word.enter {
-            animation: wordEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        @keyframes wordExit {
-            from { opacity: 1; transform: translateY(0); }
-            to   { opacity: 0; transform: translateY(-32px); }
-        }
-
-        @keyframes wordEnter {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+            margin-bottom: 3.25rem;
         }
 
         .hero-sub {
-            font-size: 0.9375rem;
-            color: rgba(255,255,255,0.58);
-            line-height: 1.5;
-            margin-bottom: 2.75rem;
-            max-width: 520px;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            font-weight: 500;
+            color: rgba(255,255,255,0.62);
+            line-height: 1.65;
+            max-width: 560px;
         }
 
         /* ─── SUBLINE ────────────────────────────── */
@@ -440,7 +393,7 @@
 
         #intro {
             background: var(--off-white);
-            padding: 7rem 5%;
+            padding: 10rem 5%;
             text-align: center;
         }
 
@@ -1462,10 +1415,8 @@
             .subline-text br { display: none; }
 
             /* Hero layout on mobile */
-            .hero-eyebrow { margin-bottom: 1.5rem; }
-            .hero-fixed { font-size: clamp(1.2rem, 5.5vw, 1.8rem); }
-            .hero-rotating-wrap { height: clamp(6rem, 20vw, 9rem); padding-top: 0.4rem; margin: 0.1rem 0; }
-            .hero-rotating-word { font-size: clamp(3.2rem, 15vw, 5.5rem); }
+            .hero-headline { font-size: clamp(1.6rem, 7vw, 2.4rem); }
+            .hero-sub { font-size: 0.9rem; }
 
             /* Mobile CTA buttons: normal weight, pill shape */
             .btn--accent {
@@ -1575,12 +1526,8 @@
 <section id="hero">
     <div class="hero-center">
         <div class="hero-headline-block">
-            <p class="hero-fixed">Gute Beratung bringt</p>
-            <div class="hero-rotating-wrap">
-                <span class="hero-rotating-word" id="hero-rotating-word">Ärzte</span>
-            </div>
-            <p class="hero-fixed">weiter im Leben.</p>
-            <a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent" style="margin-top:4rem;">Gespräch vereinbaren</a>
+            <h1 class="hero-headline">Damit du später genauso gut versorgt bist wie deine Patienten heute.</h1>
+<a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent" style="margin-top:1.5rem;">Gespräch vereinbaren</a>
         </div>
     </div>
 </section>
@@ -2056,22 +2003,6 @@
     });
 
 
-
-    // hero word rotator
-    const rotatingWord = document.getElementById('hero-rotating-word');
-    const heroWords = ['Ärzte', 'Pflegekräfte', 'Familien', 'Mediziner:innen', 'Alle'];
-    let wordIndex = 0;
-
-    setInterval(() => {
-        rotatingWord.classList.remove('enter');
-        rotatingWord.classList.add('exit');
-        setTimeout(() => {
-            wordIndex = (wordIndex + 1) % heroWords.length;
-            rotatingWord.textContent = heroWords[wordIndex];
-            rotatingWord.classList.remove('exit');
-            rotatingWord.classList.add('enter');
-        }, 450);
-    }, 5000);
 
     // burger menu
     const burgerBtn = document.getElementById('burger-btn');
