@@ -243,7 +243,7 @@
             transform: translate(-50%, -50%) scale(0.96);
             width: calc(100% - 3rem);
             max-width: 400px;
-            background: rgba(18, 18, 18, 0.92);
+            background: var(--white);
             border-radius: 20px;
             padding: 2rem 1.75rem 2rem;
             flex-direction: column;
@@ -260,27 +260,13 @@
             transform: translate(-50%, -50%) scale(1);
         }
 
-        .mobile-menu-link {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            padding: 1rem 0;
-            width: 100%;
-            text-align: center;
-            transition: color 0.18s;
-        }
-
-        .mobile-menu-link:hover { color: var(--white); }
-
-        .mobile-menu-divider {
-            width: 100%;
-            height: 1px;
-            background: rgba(255,255,255,0.08);
+        .mobile-menu-logo {
+            height: 36px;
+            width: auto;
+            margin-bottom: 1.75rem;
         }
 
         .mobile-menu .btn--cta {
-            margin-top: 1.5rem;
             width: 100%;
             text-align: center;
             padding: 1rem 1.5rem;
@@ -290,6 +276,7 @@
             background: #4a8fd4;
             color: var(--white);
             border: none;
+            display: block;
         }
 
         .mobile-menu .btn--secondary {
@@ -300,9 +287,10 @@
             font-size: 0.95rem;
             font-weight: 500;
             border-radius: 14px;
-            background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.75);
-            border: none;
+            background: var(--off-white);
+            color: var(--navy);
+            border: 1px solid var(--border);
+            display: block;
         }
 
         /* ─── HERO ───────────────────────────────── */
@@ -1356,7 +1344,7 @@
         .footer-bottom-inner {
             max-width: 980px;
             margin: 0 auto;
-            padding: 1.4rem 0;
+            padding: 2.25rem 0;
             border-top: 1px solid rgba(255,255,255,0.06);
             display: flex;
             justify-content: space-between;
@@ -1505,11 +1493,7 @@
 
 <div class="mobile-overlay" id="mobile-overlay"></div>
 <div class="mobile-menu" id="mobile-menu">
-    <a href="#" class="mobile-menu-link" data-close>Home</a>
-    <div class="mobile-menu-divider"></div>
-    <a href="#faq" class="mobile-menu-link" data-close>FAQ</a>
-    <div class="mobile-menu-divider"></div>
-    <a href="#situation" class="mobile-menu-link" data-close>Leistungen</a>
+    <img src="Bilder/LogoFarbe.png" alt="Stark Finanz" class="mobile-menu-logo">
     <a href="https://kontaktformular-gules.vercel.app" class="btn--cta" target="_blank" rel="noopener">Gespräch vereinbaren</a>
     <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn--secondary" target="_blank" rel="noopener">Kundenportal</a>
 </div>
