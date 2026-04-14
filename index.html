@@ -78,7 +78,7 @@
 
         .btn {
             display: inline-block;
-            border-radius: 6px;
+            border-radius: 999px;
             font-weight: 600;
             font-size: 0.775rem;
             transition: opacity 0.18s ease, background 0.18s ease;
@@ -319,13 +319,7 @@
             z-index: 0;
         }
 
-        .hero-top {
-            width: 100%;
-            max-width: 1100px;
-            padding-top: calc(66px + 2rem);
-            position: relative;
-            z-index: 1;
-        }
+        .hero-top { display: none; }
 
         .hero-center {
             flex: 1;
@@ -338,13 +332,7 @@
             z-index: 1;
         }
 
-        .hero-bottom {
-            width: 100%;
-            max-width: 1100px;
-            padding-bottom: 3.5rem;
-            position: relative;
-            z-index: 1;
-        }
+        .hero-bottom { display: none; }
 
         /* keep old .hero-text for compat */
         .hero-text {
@@ -355,23 +343,69 @@
         }
 
         .hero-eyebrow {
-            font-size: 0.725rem;
+            font-size: 0.75rem;
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent-l);
-            margin-bottom: 0;
+            margin-bottom: 2.5rem;
         }
 
-        .hero-headline {
-            font-size: clamp(3rem, 7.5vw, 6.5rem);
+        /* ─── HERO HEADLINE ROTATOR ──────────────── */
+
+        .hero-headline-block {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+
+        .hero-fixed {
+            font-size: clamp(1.8rem, 3.8vw, 3.2rem);
             font-weight: 700;
-            line-height: 1.06;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.25;
             letter-spacing: -0.02em;
+        }
+
+        .hero-rotating-wrap {
+            overflow: hidden;
+            height: clamp(7.5rem, 14vw, 13rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0.5rem;
+            margin: 0.1rem 0;
+        }
+
+        .hero-rotating-word {
+            display: block;
+            font-size: clamp(4.5rem, 11vw, 9.5rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1;
             color: var(--white);
-            text-shadow: 0 2px 40px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2);
-            margin: 0;
-            transition: opacity 0.5s ease;
+            text-shadow: 0 2px 60px rgba(255,255,255,0.12);
+            will-change: transform, opacity;
+        }
+
+        .hero-rotating-word.exit {
+            animation: wordExit 0.45s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+        }
+
+        .hero-rotating-word.enter {
+            animation: wordEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes wordExit {
+            from { opacity: 1; transform: translateY(0); }
+            to   { opacity: 0; transform: translateY(-32px); }
+        }
+
+        @keyframes wordEnter {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .hero-sub {
@@ -1428,8 +1462,10 @@
             .subline-text br { display: none; }
 
             /* Hero layout on mobile */
-            .hero-top { padding-top: calc(66px + 1.5rem); }
-            .hero-headline { font-size: clamp(2.6rem, 10vw, 3.8rem); }
+            .hero-eyebrow { margin-bottom: 1.5rem; }
+            .hero-fixed { font-size: clamp(1.2rem, 5.5vw, 1.8rem); }
+            .hero-rotating-wrap { height: clamp(6rem, 20vw, 9rem); padding-top: 0.4rem; margin: 0.1rem 0; }
+            .hero-rotating-word { font-size: clamp(3.2rem, 15vw, 5.5rem); }
 
             /* Mobile CTA buttons: normal weight, pill shape */
             .btn--accent {
@@ -1537,14 +1573,15 @@
 
 <!-- ─── HERO ─────────────────────────────────────── -->
 <section id="hero">
-    <div class="hero-top">
-        <p class="hero-eyebrow">Finanzberatung für<br>medizinische Berufe</p>
-    </div>
     <div class="hero-center">
-        <h1 class="hero-headline" id="hero-headline">Visite. Auch für <br>deine Finanzen.</h1>
-    </div>
-    <div class="hero-bottom">
-        <a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent">Gespräch vereinbaren</a>
+        <div class="hero-headline-block">
+            <p class="hero-fixed">Gute Beratung bringt</p>
+            <div class="hero-rotating-wrap">
+                <span class="hero-rotating-word" id="hero-rotating-word">Ärzte</span>
+            </div>
+            <p class="hero-fixed">weiter im Leben.</p>
+            <a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent" style="margin-top:4rem;">Gespräch vereinbaren</a>
+        </div>
     </div>
 </section>
 
@@ -2020,22 +2057,21 @@
 
 
 
-    // hero headline rotator
-    const heroHeadline = document.getElementById('hero-headline');
-    const heroTexts = [
-        'Visite. Auch für <br>deine Finanzen.',
-        'Schichtplan? <br>Finanzplan.',
-        'Der wichtigste <br>Patient. Du selbst.'
-    ];
-    let heroIndex = 0;
+    // hero word rotator
+    const rotatingWord = document.getElementById('hero-rotating-word');
+    const heroWords = ['Ärzte', 'Pflegekräfte', 'Familien', 'Mediziner:innen', 'Alle'];
+    let wordIndex = 0;
+
     setInterval(() => {
-        heroHeadline.style.opacity = '0';
+        rotatingWord.classList.remove('enter');
+        rotatingWord.classList.add('exit');
         setTimeout(() => {
-            heroIndex = (heroIndex + 1) % heroTexts.length;
-            heroHeadline.innerHTML = heroTexts[heroIndex];
-            heroHeadline.style.opacity = '1';
-        }, 500);
-    }, 7000);
+            wordIndex = (wordIndex + 1) % heroWords.length;
+            rotatingWord.textContent = heroWords[wordIndex];
+            rotatingWord.classList.remove('exit');
+            rotatingWord.classList.add('enter');
+        }, 450);
+    }, 5000);
 
     // burger menu
     const burgerBtn = document.getElementById('burger-btn');
