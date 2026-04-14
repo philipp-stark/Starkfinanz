@@ -300,8 +300,8 @@
             background: url('Bilder/Wallpaper3.jpg') center / cover no-repeat;
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
             text-align: center;
             padding: 0 5%;
         }
@@ -319,9 +319,36 @@
             z-index: 0;
         }
 
+        .hero-top {
+            width: 100%;
+            max-width: 1100px;
+            padding-top: calc(66px + 2rem);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-center {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-bottom {
+            width: 100%;
+            max-width: 1100px;
+            padding-bottom: 3.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* keep old .hero-text for compat */
         .hero-text {
             max-width: 1100px;
-            padding: 5rem 0;
             position: relative;
             z-index: 1;
             text-align: center;
@@ -333,7 +360,7 @@
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent-l);
-            margin-bottom: 2.5rem;
+            margin-bottom: 0;
         }
 
         .hero-headline {
@@ -343,7 +370,7 @@
             letter-spacing: -0.02em;
             color: var(--white);
             text-shadow: 0 2px 40px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2);
-            margin-bottom: 3rem;
+            margin: 0;
             transition: opacity 0.5s ease;
         }
 
@@ -1395,11 +1422,21 @@
             .nav-actions { display: none; }
             .burger { display: flex; }
 
-            /* Hide all <br> in headlines — let text wrap naturally */
+            /* Hide <br> in section headlines — let text wrap naturally */
             .section-headline br,
-            .hero-headline br,
             .about-headline br,
             .subline-text br { display: none; }
+
+            /* Hero layout on mobile */
+            .hero-top { padding-top: calc(66px + 1.5rem); }
+            .hero-headline { font-size: clamp(2.6rem, 10vw, 3.8rem); }
+
+            /* Mobile CTA buttons: normal weight, pill shape */
+            .btn--accent {
+                font-weight: 400;
+                border-radius: 999px;
+                padding: 0.85rem 2rem;
+            }
 
             /* Keep <br> in app headline */
             .app-sub { margin-bottom: 2.5rem; }
@@ -1500,12 +1537,14 @@
 
 <!-- ─── HERO ─────────────────────────────────────── -->
 <section id="hero">
-    <div class="container">
-        <div class="hero-text">
-            <p class="hero-eyebrow">Finanzberatung für medizinische Fachkräfte</p>
-            <h1 class="hero-headline" id="hero-headline">Visite. Auch für<br>deine Finanzen.</h1>
-            <a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent">Gespräch vereinbaren</a>
-        </div>
+    <div class="hero-top">
+        <p class="hero-eyebrow">Finanzberatung für<br>medizinische Berufe</p>
+    </div>
+    <div class="hero-center">
+        <h1 class="hero-headline" id="hero-headline">Visite. Auch für <br>deine Finanzen.</h1>
+    </div>
+    <div class="hero-bottom">
+        <a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent">Gespräch vereinbaren</a>
     </div>
 </section>
 
@@ -1984,9 +2023,9 @@
     // hero headline rotator
     const heroHeadline = document.getElementById('hero-headline');
     const heroTexts = [
-        'Visite. Auch für<br>deine Finanzen.',
-        'Schichtplan?<br>Finanzplan.',
-        'Der wichtigste<br>Patient. Du selbst.'
+        'Visite. Auch für <br>deine Finanzen.',
+        'Schichtplan? <br>Finanzplan.',
+        'Der wichtigste <br>Patient. Du selbst.'
     ];
     let heroIndex = 0;
     setInterval(() => {
