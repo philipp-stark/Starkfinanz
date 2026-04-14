@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Impressum — Stark Finanz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:      #0d1f3c;
+            --navy-dark: #07111f;
+            --navy-mid:  #1a3459;
+            --white:     #ffffff;
+            --off-white: #f4f6fa;
+            --border:    #dde4ee;
+            --text:      #0d1f3c;
+            --text-2:    #4a5e78;
+            --text-muted:#8096b0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; }
+
+        /* ─── NAV ─────────────────────────────────── */
+
+        nav {
+            height: 66px;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        .nav-logo img {
+            height: 34px;
+            width: auto;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-2);
+            transition: color 0.18s;
+        }
+
+        .btn-back:hover { color: var(--navy); }
+
+        .btn-back svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ─── CONTENT ─────────────────────────────── */
+
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 4rem 5% 6rem;
+        }
+
+        .page-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.038em;
+            color: var(--navy);
+            margin-bottom: 3rem;
+        }
+
+        /* ─── TOC ─────────────────────────────────── */
+
+        .toc {
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .toc-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .toc-list a {
+            font-size: 0.875rem;
+            color: var(--accent, #1d5bb5);
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            transition: color 0.15s;
+        }
+
+        .toc-list a:hover { color: var(--navy); }
+
+        .toc-num {
+            font-size: 0.725rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 1.2rem;
+        }
+
+        /* ─── CONTENT ─────────────────────────────── */
+
+        .impr-block {
+            margin-bottom: 2.75rem;
+        }
+
+        .impr-block h2 {
+            font-size: 0.725rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .impr-block p,
+        .impr-block address {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            font-style: normal;
+        }
+
+        .impr-block p + p {
+            margin-top: 0.65rem;
+        }
+
+        .impr-block a {
+            color: var(--navy);
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.18s;
+            word-break: break-all;
+        }
+
+        .impr-block a:hover {
+            border-color: var(--navy);
+        }
+
+        .impr-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 0 2.75rem;
+        }
+
+        .legal-block h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-transform: none;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .legal-block p {
+            font-size: 0.9rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            margin-bottom: 0.75rem;
+        }
+
+        .law-ref {
+            margin-top: 1.1rem !important;
+        }
+
+        /* ─── FOOTER ──────────────────────────────── */
+
+        footer {
+            background: var(--navy-dark);
+            padding: 0 6%;
+        }
+
+        .footer-main {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 4.5rem 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-cols-right {
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            height: 36px;
+            width: auto;
+            margin-bottom: 0.25rem;
+            margin-left: -0.75rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.65rem; }
+        .footer-links a {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            transition: color 0.18s;
+            line-height: 1.35;
+        }
+        .footer-links a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-contact {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer-contact a {
+            color: rgba(255,255,255,0.45);
+            transition: color 0.18s;
+        }
+        .footer-contact a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-bottom-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            white-space: nowrap;
+        }
+
+        .footer-legal { display: flex; gap: 1rem; }
+
+        .footer-legal a {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            transition: color 0.18s;
+        }
+
+        .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 860px) {
+            .footer-main { grid-template-columns: 1fr; gap: 2.25rem; padding-bottom: 2rem; }
+        }
+        @media (max-width: 560px) {
+            .page-wrap { padding: 2.5rem 5% 4rem; }
+            .footer-legal { gap: 0.5rem; flex-wrap: wrap; }
+            .footer-legal a { font-size: 0.7rem; }
+            .nav-actions .btn { padding: 0.35rem 0.75rem; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────── -->
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="Bilder/LogoFarbe.png" alt="Stark Finanz">
+    </a>
+    <a href="index.html" class="btn-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Zurück zur Startseite
+    </a>
+</nav>
+
+<!-- ─── INHALT ────────────────────────────────────── -->
+<div class="page-wrap">
+
+    <h1 class="page-title">Impressum</h1>
+
+    <!-- Inhaltsverzeichnis -->
+    <div class="toc">
+        <p class="toc-label">Inhalt</p>
+        <ol class="toc-list">
+            <li><a href="#imp-1"><span class="toc-num">1</span>Angaben gemäß § 5 TMG</a></li>
+            <li><a href="#imp-2"><span class="toc-num">2</span>Kontakt</a></li>
+            <li><a href="#imp-3"><span class="toc-num">3</span>Widerspruch gegen Werbekontaktaufnahme</a></li>
+            <li><a href="#imp-4"><span class="toc-num">4</span>Vermittlerregister</a></li>
+            <li><a href="#imp-5"><span class="toc-num">5</span>Aufsichtsbehörde</a></li>
+            <li><a href="#imp-6"><span class="toc-num">6</span>Berufsbezeichnung und berufsrechtliche Regelungen</a></li>
+            <li><a href="#imp-7"><span class="toc-num">7</span>Schlichtungsstellen</a></li>
+            <li><a href="#imp-8"><span class="toc-num">8</span>Angaben zur Berufshaftpflichtversicherung</a></li>
+            <li><a href="#imp-9"><span class="toc-num">9</span>Redaktionell verantwortlich</a></li>
+        </ol>
+    </div>
+
+    <!-- Angaben zum Unternehmen -->
+    <div class="impr-block" id="imp-1">
+        <h2>Angaben gemäß § 5 TMG</h2>
+        <address>
+            Philipp Stark<br>
+            Stark Finanz<br>
+            Daumstraße 85B<br>
+            13599 Berlin
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Kontakt -->
+    <div class="impr-block" id="imp-2">
+        <h2>Kontakt</h2>
+        <p>
+            Telefon: <a href="tel:+4917679536745">+49 176 79536745</a><br>
+            E-Mail: <a href="mailto:philipp.stark@starkfinanz.de">philipp.stark@starkfinanz.de</a>
+        </p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Widerspruch Werbekontakt -->
+    <div class="impr-block" id="imp-3">
+        <h2>Widerspruch gegen Werbekontaktaufnahme</h2>
+        <p>Der Nutzung der im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationen wird hiermit widersprochen.</p>
+        <p>Dies gilt ausdrücklich auch für sämtliche Formen der Kontaktaufnahme zu Werbe- und Akquise-Zwecken gegenüber dem Seitenbetreiber als Unternehmer (B2B), insbesondere für Telefonanrufe, Rückrufbitten, Kontaktaufnahmen über Messenger-Dienste, soziale Netzwerke, Fax, Postsendungen sowie elektronische Nachrichten jeder Art.</p>
+        <p>Eine mutmaßliche Einwilligung im Sinne des § 7 UWG liegt nicht vor. Werbliche Kontaktaufnahmen ohne vorherige ausdrückliche Einwilligung sind unerwünscht und unzulässig.</p>
+        <p>Hiervon ausgenommen sind ausschließlich konkrete Anfragen von Interessenten, Kunden oder Geschäftspartnern, die sich auf die angebotenen Dienstleistungen oder bestehende Vertragsverhältnisse beziehen.</p>
+        <p>Der Seitenbetreiber behält sich ausdrücklich rechtliche Schritte im Falle unverlangter Werbekontaktaufnahme vor. Insbesondere kommen Ansprüche auf Unterlassung sowie die Geltendmachung von Kosten nach den Vorschriften des Gesetzes gegen den unlauteren Wettbewerb (UWG) in Betracht.</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Vermittlerregister -->
+    <div class="impr-block" id="imp-4">
+        <h2>Vermittlerregister</h2>
+        <p>
+            <a href="https://www.vermittlerregister.info" target="_blank" rel="noopener">www.vermittlerregister.info</a><br>
+            Registrierungs-Nr.: D-JCC8-UEKSH-61
+        </p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Aufsichtsbehörde -->
+    <div class="impr-block" id="imp-5">
+        <h2>Aufsichtsbehörde</h2>
+        <address>
+            Industrie- und Handelskammer (IHK) Berlin<br>
+            Fasanenstraße 85<br>
+            10623 Berlin<br>
+            <a href="https://www.ihk.de/berlin" target="_blank" rel="noopener">www.ihk.de/berlin</a>
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Berufsbezeichnung -->
+    <div class="impr-block" id="imp-6">
+        <h2>Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+        <p><strong>Berufsbezeichnung:</strong> Versicherungsmakler</p>
+        <p>
+            <strong>Zuständige Kammer:</strong><br>
+            Industrie- und Handelskammer (IHK) Berlin<br>
+            Fasanenstraße 85, 10623 Berlin
+        </p>
+        <p><strong>Verliehen in:</strong> Deutschland</p>
+        <p style="margin-top: 1.25rem;">Es gelten folgende berufsrechtliche Regelungen:</p>
+        <p class="law-ref">
+            § 34d Gewerbeordnung (GewO)<br>
+            <a href="https://www.gesetze-im-internet.de/gewo/__34d.html" target="_blank" rel="noopener">gesetze-im-internet.de/gewo/__34d.html</a>
+        </p>
+        <p class="law-ref">
+            §§ 59–68 Versicherungsvertragsgesetz (VVG)<br>
+            <a href="https://www.gesetze-im-internet.de/vvg_2008/__59.html" target="_blank" rel="noopener">gesetze-im-internet.de/vvg_2008/__59.html</a>
+        </p>
+        <p class="law-ref">
+            Verordnung über die Versicherungsvermittlung und -beratung (VersVermV)<br>
+            <a href="https://www.gesetze-im-internet.de/versvermv/" target="_blank" rel="noopener">gesetze-im-internet.de/versvermv/</a>
+        </p>
+        <p class="law-ref">
+            Richtlinie (EU) 2016/97 über Versicherungsvertrieb<br>
+            <a href="https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32016L0097" target="_blank" rel="noopener">eur-lex.europa.eu &rarr; Richtlinie (EU) 2016/97</a>
+        </p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Schlichtungsstellen -->
+    <div class="impr-block" id="imp-7">
+        <h2>Schlichtungsstellen</h2>
+        <p>Bei Streitigkeiten zwischen Versicherungsvermittlern und Versicherungsnehmern können folgende unabhängige Schlichtungsstellen im Sinne des § 214 Versicherungsvertragsgesetz angerufen werden:</p>
+        <address>
+            Versicherungsombudsmann e.V.<br>
+            Postfach 080632<br>
+            10006 Berlin<br>
+            <a href="https://versicherungsombudsmann.de" target="_blank" rel="noopener">versicherungsombudsmann.de</a>
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Berufshaftpflicht -->
+    <div class="impr-block" id="imp-8">
+        <h2>Angaben zur Berufshaftpflichtversicherung</h2>
+        <p>
+            <strong>Name und Sitz des Versicherers:</strong><br>
+            R+V Allgemeine Versicherung AG<br>
+            Raiffeisenplatz 1<br>
+            65189 Wiesbaden
+        </p>
+        <p style="margin-top: 1rem;"><strong>Geltungsraum der Versicherung:</strong> Deutschland</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Redaktionell verantwortlich -->
+    <div class="impr-block" id="imp-9">
+        <h2>Redaktionell verantwortlich</h2>
+        <address>
+            Philipp Stark<br>
+            Daumstraße 85B<br>
+            13599 Berlin
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Verbraucherstreit -->
+    <div class="impr-block legal-block">
+        <h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
+        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Haftung Inhalte -->
+    <div class="impr-block legal-block">
+        <h2>Haftung für Inhalte</h2>
+        <p>Als Diensteanbieter ist Philipp Stark gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG ist Philipp Stark als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen wird Philipp Stark diese Inhalte umgehend entfernen.</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Haftung Links -->
+    <div class="impr-block legal-block">
+        <h2>Haftung für Links</h2>
+        <p>Diese Seite enthält Links zu externen Websites Dritter, auf deren Inhalte Philipp Stark keinen Einfluss hat. Deshalb kann Philipp Stark für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen wird Philipp Stark derartige Links umgehend entfernen.</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Urheberrecht -->
+    <div class="impr-block legal-block">
+        <h2>Urheberrecht</h2>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet. Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+    </div>
+
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+    <div class="footer-main">
+        <div>
+            <div class="footer-logo">
+                <img src="Bilder/LogoWeiss.png" alt="Stark Finanz">
+            </div>
+            <p class="footer-tagline">Reanimation. Auch für deine Finanzen.<br>Wir sind dein Vorsorgepartner in deinen Finanzthemen.</p>
+        </div>
+
+        <div class="footer-cols-right">
+            <div>
+                <p class="footer-col-title">Links</p>
+                <ul class="footer-links">
+                    <li><a href="basisinformation.html">Basisinformation<br>zu Versicherungen</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="footer-col-title">Kontakt</p>
+                <div class="footer-contact">
+                    <a href="mailto:philipp.stark@starkfinanz.de">philipp.stark@starkfinanz.de</a>
+                    <a href="tel:+4917679536745">+49 176 795 36745</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p class="footer-copy">&copy; 2026 Philipp Stark. Alle Rechte vorbehalten.</p>
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+<a href="erstinformation.html">Erstinformation</a>
+                <a href="transparenzverordnung.html">Transparenzverordnung</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

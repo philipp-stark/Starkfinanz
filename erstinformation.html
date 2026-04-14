@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Erstinformation — Stark Finanz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:      #0d1f3c;
+            --navy-dark: #07111f;
+            --navy-mid:  #1a3459;
+            --white:     #ffffff;
+            --off-white: #f4f6fa;
+            --border:    #dde4ee;
+            --text:      #0d1f3c;
+            --text-2:    #4a5e78;
+            --text-muted:#8096b0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; }
+
+        /* ─── NAV ─────────────────────────────────── */
+
+        nav {
+            height: 66px;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        .nav-logo img {
+            height: 34px;
+            width: auto;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-2);
+            transition: color 0.18s;
+        }
+
+        .btn-back:hover { color: var(--navy); }
+
+        .btn-back svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ─── CONTENT ─────────────────────────────── */
+
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 4rem 5% 6rem;
+        }
+
+        .page-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.038em;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* ─── TOC ─────────────────────────────────── */
+
+        .toc {
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .toc-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .toc-list a {
+            font-size: 0.875rem;
+            color: #1d5bb5;
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            transition: color 0.15s;
+        }
+
+        .toc-list a:hover { color: var(--navy); }
+
+        .toc-num {
+            font-size: 0.725rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 1.2rem;
+        }
+
+        /* ─── CONTENT ─────────────────────────────── */
+
+        .impr-block {
+            margin-bottom: 2.75rem;
+        }
+
+        .impr-block h2 {
+            font-size: 0.725rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .impr-block p,
+        .impr-block address {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            font-style: normal;
+        }
+
+        .impr-block p + p {
+            margin-top: 0.65rem;
+        }
+
+        .impr-block a {
+            color: var(--navy);
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.18s;
+            word-break: break-all;
+        }
+
+        .impr-block a:hover {
+            border-color: var(--navy);
+        }
+
+        .impr-block address strong {
+            display: block;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.15rem;
+        }
+
+        .impr-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0 0 2.75rem;
+        }
+
+        .footnote {
+            font-size: 0.8rem !important;
+            color: var(--text-muted) !important;
+            margin-top: 0.4rem !important;
+        }
+
+        /* ─── FOOTER ──────────────────────────────── */
+
+        footer {
+            background: var(--navy-dark);
+            padding: 0 6%;
+        }
+
+        .footer-main {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 4.5rem 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-cols-right {
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            height: 36px;
+            width: auto;
+            margin-bottom: 0.25rem;
+            margin-left: -0.75rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.65rem; }
+        .footer-links a {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            transition: color 0.18s;
+            line-height: 1.35;
+        }
+        .footer-links a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-contact {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer-contact a {
+            color: rgba(255,255,255,0.45);
+            transition: color 0.18s;
+        }
+        .footer-contact a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-bottom-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            white-space: nowrap;
+        }
+
+        .footer-legal { display: flex; gap: 1rem; }
+
+        .footer-legal a {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            transition: color 0.18s;
+        }
+
+        .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 860px) {
+            .footer-main { grid-template-columns: 1fr; gap: 2.25rem; padding-bottom: 2rem; }
+        }
+        @media (max-width: 560px) {
+            .page-wrap { padding: 2.5rem 5% 4rem; }
+            .footer-legal { gap: 0.5rem; flex-wrap: wrap; }
+            .footer-legal a { font-size: 0.7rem; }
+            .nav-actions .btn { padding: 0.35rem 0.75rem; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────── -->
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="Bilder/LogoFarbe.png" alt="Stark Finanz">
+    </a>
+    <a href="index.html" class="btn-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Zurück zur Startseite
+    </a>
+</nav>
+
+<!-- ─── INHALT ────────────────────────────────────── -->
+<div class="page-wrap">
+
+    <h1 class="page-title">Erstinformation</h1>
+    <p class="page-subtitle">gemäß § 15 VersVermV</p>
+
+    <!-- Inhaltsverzeichnis -->
+    <div class="toc">
+        <p class="toc-label">Inhalt</p>
+        <ol class="toc-list">
+            <li><a href="#ei-1"><span class="toc-num">1</span>Angaben zum Unternehmen</a></li>
+            <li><a href="#ei-2"><span class="toc-num">2</span>Status des Vermittlers nach Gewerbeordnung</a></li>
+            <li><a href="#ei-3"><span class="toc-num">3</span>Zuständige Aufsichtsbehörde</a></li>
+            <li><a href="#ei-4"><span class="toc-num">4</span>Schlichtungsstellen</a></li>
+            <li><a href="#ei-5"><span class="toc-num">5</span>Berufshaftpflichtversicherung</a></li>
+            <li><a href="#ei-6"><span class="toc-num">6</span>Hinweis</a></li>
+            <li><a href="#ei-7"><span class="toc-num">7</span>Vergütung</a></li>
+            <li><a href="#ei-8"><span class="toc-num">8</span>Beratungsleistung</a></li>
+        </ol>
+    </div>
+
+    <!-- Angaben zum Unternehmen -->
+    <div class="impr-block" id="ei-1">
+        <h2>Angaben zum Unternehmen</h2>
+        <address>
+            Philipp Stark<br>
+            Stark Finanz<br>
+            Daumstraße 85B<br>
+            13599 Berlin
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Status des Vermittlers -->
+    <div class="impr-block" id="ei-2">
+        <h2>Status des Vermittlers nach Gewerbeordnung</h2>
+        <p>Die Eintragung im Vermittlerregister besteht als zugelassener Versicherungsmakler nach § 34d GewO mit der Registrierungs-Nr.: D-JCC8-UEKSH-61</p>
+        <p style="margin-top: 1.1rem;">Bei Interesse können die Angaben bei der Registerstelle überprüft werden:</p>
+        <address style="margin-top: 0.5rem;">
+            Deutsche Industrie- und Handelskammer (DIHK)<br>
+            Breite Straße 29, 10178 Berlin<br>
+            Tel.: <a href="tel:01806005850">0180-600-585-0</a>*
+        </address>
+        <p class="footnote">*20 Cent/Anruf aus dem deutschen Festnetz</p>
+        <p style="margin-top: 0.75rem;"><a href="http://www.vermittlerregister.info" target="_blank" rel="noopener">www.vermittlerregister.info</a></p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Aufsichtsbehörde -->
+    <div class="impr-block" id="ei-3">
+        <h2>Zuständige Aufsichtsbehörde</h2>
+        <address>
+            Industrie- und Handelskammer (IHK) Berlin<br>
+            Fasanenstraße 85<br>
+            10623 Berlin<br>
+            <a href="https://www.ihk-berlin.de" target="_blank" rel="noopener">www.ihk-berlin.de</a>
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Schlichtungsstellen -->
+    <div class="impr-block" id="ei-4">
+        <h2>Schlichtungsstellen</h2>
+        <p>Bei Streitigkeiten zwischen Versicherungsvermittlern und Versicherungsnehmern können folgende unabhängige Schlichtungsstellen im Sinne des § 214 Versicherungsvertragsgesetz angerufen werden:</p>
+        <address style="margin-top: 1rem;">
+            Versicherungsombudsmann e.V.<br>
+            Postfach 080632<br>
+            10006 Berlin<br>
+            <a href="https://versicherungsombudsmann.de" target="_blank" rel="noopener">versicherungsombudsmann.de</a>
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Berufshaftpflicht -->
+    <div class="impr-block" id="ei-5">
+        <h2>Berufshaftpflichtversicherung</h2>
+        <p>Es besteht eine Vermögensschaden-Haftpflichtversicherung, die in der Höhe die Mindestanforderungen des § 9 der Verordnung über die Versicherungsvermittlung und -beratung (VersVermV) übersteigt. Risikoträger ist:</p>
+        <address style="margin-top: 1rem;">
+            R+V Allgemeine Versicherung AG<br>
+            Raiffeisenplatz 1<br>
+            65189 Wiesbaden
+        </address>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Hinweis Beteiligungen -->
+    <div class="impr-block" id="ei-6">
+        <h2>Hinweis</h2>
+        <p>Der Vermittler hält keine unmittelbare oder mittelbare Beteiligung von mehr als 10 % der Stimmrechte oder des Kapitals an einem Versicherungsunternehmen.</p>
+        <p>Ein Versicherungsunternehmen hält keine mittelbare oder unmittelbare Beteiligung von mehr als 10 % der Stimmrechte oder des Kapitals am Versicherungsmakler.</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Vergütung -->
+    <div class="impr-block" id="ei-7">
+        <h2>Vergütung</h2>
+        <p>Der Vermittler erhält für die Vermittlung von Versicherungsverträgen eine Courtage des Produktgebers. Eine gesonderte Vergütung durch den Kunden wird nicht geschuldet. Sofern die Vergütung aufgrund der Wünsche und Bedürfnisse durch den Kunden erfolgt, wird hierfür eine separate Vergütungsvereinbarung getroffen.</p>
+        <p>Für sogenannte Nettotarife – Produkte ohne enthaltene Vermittlungsprovision – vereinbaren wir eine separate Vergütung in Form einer direkten Provision, die vom Kunden getragen wird. So ermöglichen wir den Zugang zu besonders kostentransparenten Tarifen. Über die jeweilige Vergütungsform informieren wir vor Vertragsabschluss vollständig. Abweichende Regelungen werden stets schriftlich und ausdrücklich vereinbart.</p>
+    </div>
+
+    <hr class="impr-divider">
+
+    <!-- Beratungsleistung -->
+    <div class="impr-block" id="ei-8">
+        <h2>Beratungsleistung</h2>
+        <p>Die Tätigkeit beinhaltet auch Beratung.</p>
+    </div>
+
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+    <div class="footer-main">
+        <div>
+            <div class="footer-logo">
+                <img src="Bilder/LogoWeiss.png" alt="Stark Finanz">
+            </div>
+            <p class="footer-tagline">Reanimation. Auch für deine Finanzen.<br>Wir sind dein Vorsorgepartner in deinen Finanzthemen.</p>
+        </div>
+
+        <div class="footer-cols-right">
+            <div>
+                <p class="footer-col-title">Links</p>
+                <ul class="footer-links">
+                    <li><a href="basisinformation.html">Basisinformation<br>zu Versicherungen</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="footer-col-title">Kontakt</p>
+                <div class="footer-contact">
+                    <a href="mailto:philipp.stark@starkfinanz.de">philipp.stark@starkfinanz.de</a>
+                    <a href="tel:+4917679536745">+49 176 795 36745</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p class="footer-copy">&copy; 2026 Philipp Stark. Alle Rechte vorbehalten.</p>
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+<a href="erstinformation.html">Erstinformation</a>
+                <a href="transparenzverordnung.html">Transparenzverordnung</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

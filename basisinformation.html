@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Basisinformation zu Versicherungen — Stark Finanz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:      #0d1f3c;
+            --navy-dark: #07111f;
+            --navy-mid:  #1a3459;
+            --white:     #ffffff;
+            --off-white: #f4f6fa;
+            --border:    #dde4ee;
+            --text:      #0d1f3c;
+            --text-2:    #4a5e78;
+            --text-muted:#8096b0;
+            --accent:    #1d5bb5;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; }
+
+        /* ─── NAV ─────────────────────────────────── */
+
+        nav {
+            height: 66px;
+            background: rgba(255,255,255,0.96);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+        }
+
+        .nav-logo img {
+            height: 34px;
+            width: auto;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-2);
+            transition: color 0.18s;
+        }
+
+        .btn-back:hover { color: var(--navy); }
+
+        .btn-back svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* ─── LAYOUT ──────────────────────────────── */
+
+        .page-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 4rem 5% 6rem;
+        }
+
+        .page-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.038em;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-intro {
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        /* ─── TOC ─────────────────────────────────── */
+
+        .toc {
+            background: var(--off-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .toc-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .toc-list a {
+            font-size: 0.875rem;
+            color: var(--accent);
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            transition: color 0.15s;
+        }
+
+        .toc-list a:hover { color: var(--navy); }
+
+        .toc-num {
+            font-size: 0.725rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            min-width: 1.2rem;
+        }
+
+        /* ─── SECTIONS ────────────────────────────── */
+
+        .section {
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+
+        .section:first-of-type {
+            padding-top: 0;
+            border-top: none;
+            margin-top: 0;
+        }
+
+        .section-tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .section h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .section p {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.75;
+        }
+
+        .section p + p {
+            margin-top: 1rem;
+        }
+
+        /* ─── LISTS ───────────────────────────────── */
+
+        .info-list {
+            list-style: none;
+            margin: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .info-list li {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.7;
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
+        .info-list li::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            min-width: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-top: 0.6rem;
+        }
+
+        /* ─── FOOTER ──────────────────────────────── */
+
+        footer {
+            background: var(--navy-dark);
+            padding: 0 6%;
+        }
+
+        .footer-main {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 4.5rem 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-cols-right {
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            height: 36px;
+            width: auto;
+            margin-bottom: 0.25rem;
+            margin-left: -0.75rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.65rem; }
+        .footer-links a {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            transition: color 0.18s;
+            line-height: 1.35;
+        }
+        .footer-links a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-contact {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.45);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .footer-contact a {
+            color: rgba(255,255,255,0.45);
+            transition: color 0.18s;
+        }
+        .footer-contact a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-bottom-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            white-space: nowrap;
+        }
+
+        .footer-legal { display: flex; gap: 1rem; }
+
+        .footer-legal a {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            transition: color 0.18s;
+        }
+
+        .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 860px) {
+            .footer-main { grid-template-columns: 1fr; gap: 2.25rem; padding-bottom: 2rem; }
+            .footer-cols-right { justify-content: flex-start; }
+        }
+        @media (max-width: 560px) {
+            .page-wrap { padding: 2.5rem 5% 4rem; }
+            .footer-legal { gap: 0.5rem; flex-wrap: wrap; }
+            .footer-legal a { font-size: 0.7rem; }
+            .nav-actions .btn { padding: 0.35rem 0.75rem; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ───────────────────────────────────────── -->
+<nav>
+    <a href="index.html" class="nav-logo">
+        <img src="Bilder/LogoFarbe.png" alt="Stark Finanz">
+    </a>
+    <a href="index.html" class="btn-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+        </svg>
+        Zurück zur Startseite
+    </a>
+</nav>
+
+<!-- ─── INHALT ────────────────────────────────────── -->
+<div class="page-wrap">
+
+    <h1 class="page-title">Basisinformation zu Versicherungen</h1>
+    <p class="page-intro">9 Abschnitte — Allgemeine und spartenspezifische Hinweise</p>
+
+    <!-- Inhaltsverzeichnis -->
+    <div class="toc">
+        <p class="toc-label">Inhalt</p>
+        <ol class="toc-list">
+            <li><a href="#allgemein"><span class="toc-num">1</span>Allgemeine Hinweise</a></li>
+            <li><a href="#person"><span class="toc-num">2</span>Personenversicherung</a></li>
+            <li><a href="#leben"><span class="toc-num">3</span>Lebens-, Berufsunfähigkeits- und Rentenversicherung</a></li>
+            <li><a href="#krank"><span class="toc-num">4</span>Krankenversicherung</a></li>
+            <li><a href="#unfall"><span class="toc-num">5</span>Unfallversicherung</a></li>
+            <li><a href="#haftpflicht"><span class="toc-num">6</span>Haftpflichtversicherung</a></li>
+            <li><a href="#rechtsschutz"><span class="toc-num">7</span>Rechtsschutzversicherung</a></li>
+            <li><a href="#sach"><span class="toc-num">8</span>Sachversicherung</a></li>
+            <li><a href="#kfz"><span class="toc-num">9</span>Kraftfahrtversicherung</a></li>
+        </ol>
+    </div>
+
+    <!-- 1 ─ Allgemeine Hinweise -->
+    <div class="section" id="allgemein">
+        <p class="section-tag">Abschnitt 1</p>
+        <h2>Allgemeine Hinweise</h2>
+
+        <p>Falls du uns mit der Vermittlung eines neuen Vertrages beauftragt hast, bitten wir dich, einen außerhalb unserer Betreuung bestehenden Vorvertrag erst nach Annahme des neuen Vertrages, also nach Zugang des Versicherungsscheins, zu kündigen. Sollten Kündigungsfristen zu beachten sein, sprich uns bitte bezüglich der weiteren Vorgehensweise an.</p>
+
+        <p>Besonders möchten wir auf die Anzeige von gefahrerheblichen Umständen hinweisen. Gefahrerheblich sind insbesondere Umstände, nach denen der Versicherer beispielsweise in seinen Antragsformularen fragt.</p>
+
+        <p>Soweit dir der Versicherungsschein direkt vom Versicherer zugeht, bitten wir dich, diesen auf Korrektheit zu prüfen, insbesondere dahingehend, ob Abweichungen vom gestellten Antrag dokumentiert wurden. Gerne kannst du uns beauftragen, den Versicherungsschein auf Korrektheit zu prüfen.</p>
+
+        <p>Wir weisen darauf hin, dass der Versicherungsschutz erst nach Bezahlung des Erstbeitrages, frühestens zum beantragten Versicherungsbeginn beginnt, soweit vom Versicherer keine vorläufige Deckung erteilt wurde. Der Versicherungsschutz erlischt, wenn Folgebeiträge nicht innerhalb der in der Mahnung bestimmten Frist, in der Regel zwei Wochen, entrichtet werden.</p>
+
+        <p>Bitte beachte die jeweiligen vertraglichen Obliegenheiten. Eine Nichtbeachtung kann zu Leistungseinschränkungen und Leistungsfreiheit des Versicherers führen. Obliegenheiten sind zum Beispiel:</p>
+
+        <ul class="info-list">
+            <li>die unverzügliche Meldung von Schadensfällen, welche eine Leistungspflicht des Versicherers begründen können</li>
+            <li>Maßnahmen zur Schadensvorbeugung sowie nach Eintritt des Schadens Maßnahmen zur Schadensminderung</li>
+            <li>die Anzeige von gefahrerhöhenden Umständen bei und nach Vertragsabschluss</li>
+            <li>weitere Obliegenheiten gemäß den jeweiligen Versicherungsbedingungen</li>
+        </ul>
+
+        <p>Bei einem Versichererwechsel bestehen regelmäßig Vor- und Nachteile gegenüber dem bisherigen Vertragswerk. Eine vollständige Information über mögliche Vor- und Nachteile der einzelnen Bedingungswerke kann im Hinblick auf deren Umfang nicht gegeben werden. Wir verweisen hierzu auf die jeweiligen Vertragsbedingungen.</p>
+
+        <p>Bitte informiere uns, wenn sich bei dir Veränderungen ergeben, die eine Anpassung der Versicherungsverträge erfordern oder erfordern könnten. Ebenso stehen wir dir nach Aufforderung gerne zur Verfügung, wenn bestehende Versicherungsverträge an geänderte Marktgegebenheiten angepasst werden sollen.</p>
+
+        <p>Wesentliche Informationen kannst du dem Produktinformationsblatt des Versicherers sowie den allgemeinen spartenspezifischen Informationsunterlagen entnehmen, die du vom Versicherer erhältst.</p>
+    </div>
+
+    <!-- 2 ─ Personenversicherung -->
+    <div class="section" id="person">
+        <p class="section-tag">Abschnitt 2</p>
+        <h2>Allgemeine Hinweise zur Personenversicherung</h2>
+
+        <p>In der Personenversicherung ist es besonders wichtig, dass die Gesundheitsfragen vollständig und korrekt ausgefüllt werden. Werden diese unvollständig oder fehlerhaft eingetragen, kann der Versicherer eventuell vom Vertrag zurücktreten, diesen kündigen oder wegen arglistiger Täuschung anfechten. Gleiches gilt für die Beschreibung deines Berufsbildes und die Angabe deiner Einkommensverhältnisse. Ist ein Versicherer vom Vertrag zurückgetreten oder hat er diesen rechtswirksam angefochten, ist er in der Regel leistungsfrei. Häufig ist es dann nicht mehr möglich, einen anderen Versicherer zu finden, der eine Anschlussversicherung anbietet.</p>
+
+        <p>Du kannst die Gesundheitserklärung oder Ergänzungen hierzu auch direkt an den Versicherer geben.</p>
+    </div>
+
+    <!-- 3 ─ Lebens-, BU- und Rentenversicherung -->
+    <div class="section" id="leben">
+        <p class="section-tag">Abschnitt 3</p>
+        <h2>Allgemeine Hinweise zur Lebens-, Berufsunfähigkeits- und Rentenversicherung</h2>
+
+        <p>Im Angebot ausgewiesene Gewinnanteile sind nicht garantiert. Diese sind insbesondere von der künftigen Entwicklung der Kapitalmärkte sowie von Kosten und Risiken abhängig.</p>
+
+        <p>Bei gezillmerten Tarifen wird ein Großteil der Kosten in den ersten fünf Jahren abgezogen. Dies führt dazu, dass bei Rückkauf oder Beitragsfreistellung ein geringerer Wert als die eingezahlten Beiträge zur Verfügung steht. Detaillierte Angaben zu den Kosten und dem Verlauf entnimmst du bitte der vollständigen Beispielrechnung des Versicherers.</p>
+
+        <p>Soweit deinem Vertrag Nichtraucherbestimmungen zugrunde liegen, informiere uns bitte, wenn du nach Vertragsabschluss mit dem Rauchen beginnst, damit der Vertrag angepasst wird. Andernfalls ist der Versicherer in der Regel berechtigt, die Versicherungsleistung im Verhältnis zur ersparten Prämie zu kürzen.</p>
+
+        <p>Besonders gefährliche Betätigungen oder Sportarten, darunter auch die Tätigkeit als Flugzeugführer, sind auch dann nur mitversichert, wenn du sie erstmals nach Vertragsbeginn ausübst und sie angezeigt sowie besonders vereinbart wurden.</p>
+    </div>
+
+    <!-- 4 ─ Krankenversicherung -->
+    <div class="section" id="krank">
+        <p class="section-tag">Abschnitt 4</p>
+        <h2>Allgemeine Hinweise zur Krankenversicherung</h2>
+
+        <p>Die künftige Beitragsentwicklung ist im Wesentlichen von Kostensteigerungen im Gesundheitswesen und längeren Lebenserwartungen geprägt. Trotz einkalkulierter Alterungsrückstellungen wird es zu Beitragserhöhungen kommen. Über die mögliche Höhe künftiger Beiträge können wir keine Auskunft geben.</p>
+
+        <p>Versicherungsnehmer, die das 55. Lebensjahr überschritten haben, können unter bestimmten Umständen nicht mehr in die gesetzliche Krankenversicherung zurückkehren.</p>
+
+        <p>Versicherungsnehmer, die in der zweiten Hälfte ihres Erwerbslebens nicht mindestens 90 Prozent der Zeit gesetzlich krankenversichert waren, werden als Rentner freiwillige Mitglieder der gesetzlichen Krankenkasse. Dadurch werden Beiträge nicht nur auf die gesetzliche Rente, sondern auch auf Mieteinnahmen und Kapitalzinserträge erhoben. Nur wer mehr als 90 Prozent dieser Zeit Mitglied in der gesetzlichen Krankenversicherung war, wird im Rentenalter Pflichtmitglied in der Krankenversicherung der Rentner und muss Beiträge lediglich auf die gesetzliche Rente und gegebenenfalls auf Betriebsrenten zahlen.</p>
+
+        <p>Während der Vertragslaufzeit hast du das Recht, in andere Tarife deines Versicherers unter Mitnahme der Alterungsrückstellungen zu wechseln. Das kann für dich günstig sein, wenn neue Tarife eingeführt werden, sich andere Tarife bei Beitragsanpassungen besser entwickelt haben oder sich deine Anforderungen an den Versicherungsschutz ändern. Sprich uns gerne an, wenn wir alternative Tarife prüfen sollen.</p>
+
+        <p>Wurde der private Krankenvollversicherungsschutz ab dem 1. Januar 2009 begründet, ist auch ein Wechsel zu einem anderen Versicherungsunternehmen unter teilweiser Übertragung der Alterungsrückstellungen möglich. Dabei wird der Teil übertragen, der dem Basistarif entspricht. Ein relevanter Teil verbleibt jedoch immer beim bisherigen Versicherer, weshalb ein Wechsel in der Regel nicht zu empfehlen ist.</p>
+
+        <p>Nimmst du ärztliche Leistungen in Anspruch, die nicht nach GoÄ oder GoZ beziehungsweise nicht nach den dort genannten Sätzen abgerechnet werden, empfehlen wir, vorab die Kostenübernahme mit dem Versicherer zu klären, zum Beispiel bei alternativen Heilmethoden, Honorarvereinbarungen, Auslandsbehandlungen oder Rücktransporten.</p>
+
+        <p>Wir empfehlen, und einige Versicherer verlangen es, bei Zahnersatz, Kieferorthopädie und größeren Zahnbehandlungen einen Heil- und Kostenplan zur Genehmigung einzureichen.</p>
+
+        <p>Bei stationären Aufenthalten empfehlen wir, eine Kostenübernahmeerklärung vom Versicherer an das Krankenhaus veranlassen zu lassen.</p>
+
+        <p>Bei gemischten Anstalten besteht nach den Vertragsbedingungen der meisten Versicherer nur nach vorheriger Genehmigung eine Leistungspflicht.</p>
+
+        <p>Melde in der Krankentagegeldversicherung Erkrankungen unverzüglich, die eine Arbeitsunfähigkeit über die Karenzzeit hinaus zur Folge haben könnten, da in der Regel keine rückwirkende Leistungspflicht besteht.</p>
+
+        <p>Melde in der Pflegepflichtversicherung den Eintritt der Leistungspflicht sofort, da in der Regel ebenfalls keine rückwirkende Leistungspflicht besteht.</p>
+
+        <p>Kinder können ohne Gesundheitsprüfung in der Krankenvollversicherung eines Elternteils mitversichert werden. Die Meldefrist ergibt sich aus den Versicherungsbedingungen und beträgt üblicherweise zwei Monate. Danach ist eine Mitversicherung nur mit Gesundheitsprüfung möglich.</p>
+
+        <p>Bei Anwartschaftsversicherungen ist der Wegfall der Voraussetzungen innerhalb der vereinbarten Frist, spätestens innerhalb von zwei Monaten, anzuzeigen, da sonst sämtliche Ansprüche erlöschen.</p>
+    </div>
+
+    <!-- 5 ─ Unfallversicherung -->
+    <div class="section" id="unfall">
+        <p class="section-tag">Abschnitt 5</p>
+        <h2>Allgemeine Hinweise zur Unfallversicherung</h2>
+
+        <p>Melde jeden Unfall unverzüglich und lasse dich ärztlich behandeln. Unfalltod muss bei manchen Versicherern bereits innerhalb von 24 Stunden gemeldet werden.</p>
+
+        <p>Bleiben Dauerschäden zurück, muss der Anspruch auf Invaliditätsleistungen innerhalb von zwölf Monaten schriftlich geltend gemacht werden, wobei bei einigen Versicherern längere Fristen gelten. Wird diese Frist versäumt, erlischt der Anspruch.</p>
+
+        <p>Melde unverzüglich, wenn eine versicherte Person zwischenzeitlich pflegebedürftig wird oder verstirbt.</p>
+
+        <p>Da die meisten Unfallversicherer zwischen handwerklicher und kaufmännischer Tätigkeit unterscheiden, musst du einen Berufswechsel unverzüglich anzeigen.</p>
+    </div>
+
+    <!-- 6 ─ Haftpflichtversicherung -->
+    <div class="section" id="haftpflicht">
+        <p class="section-tag">Abschnitt 6</p>
+        <h2>Allgemeine Hinweise zur Haftpflichtversicherung</h2>
+
+        <p>Gib uns unverzüglich Nachricht, wenn sich Risikoerweiterungen oder Risikoerhöhungen ergeben. Besonders in der gewerblichen Haftpflichtversicherung ist es wichtig, dass die jährlichen Risikofragebögen korrekt und vollständig ausgefüllt werden.</p>
+
+        <p>Da du nach gesetzlichen Bestimmungen unbegrenzt haftest, empfehlen wir zu prüfen, ob Deckungssumme und Sublimits ausreichend bemessen sind.</p>
+
+        <p>Wirst du mit Ansprüchen konfrontiert, die eine Leistungspflicht des Haftpflichtversicherers begründen könnten, informiere uns umgehend, damit das weitere Vorgehen abgestimmt werden kann. Bitte erkenne ohne Zustimmung des Versicherers keine Ansprüche an und beauftrage keinen eigenen Anwalt mit der Abwehr.</p>
+    </div>
+
+    <!-- 7 ─ Rechtsschutzversicherung -->
+    <div class="section" id="rechtsschutz">
+        <p class="section-tag">Abschnitt 7</p>
+        <h2>Allgemeine Hinweise zur Rechtsschutzversicherung</h2>
+
+        <p>Versicherungsschutz besteht ausschließlich für die vereinbarten Leistungsarten. Wir empfehlen dringend, vor Beauftragung eines Anwalts eine Deckungszusage einzuholen.</p>
+
+        <p>Beauftragst du direkt einen Anwalt, solltest du verbindlich vereinbaren, dass dieser erst tätig wird, wenn eine schriftliche Kostenzusage des Versicherers vorliegt und du über mögliche nicht gedeckte Kosten informiert wurdest.</p>
+
+        <p>Viele Rechtsschutzversicherer bieten inzwischen eine kostenfreie telefonische Rechtsberatung an, die häufig auch für nicht versicherte Schäden genutzt werden kann.</p>
+
+        <p>Der Versicherungsschutz beginnt meist für behauptete Rechtsverstöße, die nach Vertragsabschluss und einer möglichen zusätzlichen Wartezeit von drei Monaten eintreten.</p>
+    </div>
+
+    <!-- 8 ─ Sachversicherung -->
+    <div class="section" id="sach">
+        <p class="section-tag">Abschnitt 8</p>
+        <h2>Allgemeine Hinweise zur Sachversicherung</h2>
+
+        <p>Versichert sind ausschließlich die im Vertrag beschriebenen Sachen an den vereinbarten Versicherungsorten. Teile uns Änderungen unverzüglich mit.</p>
+
+        <p>Ohne All-Risk-Deckung besteht Versicherungsschutz nur für die ausdrücklich genannten Gefahren.</p>
+
+        <p>Prüfe, ob die Versicherungssumme ausreichend ist. Liegt sie deutlich unter dem Versicherungswert, kann der Versicherer die Leistung im Schadenfall entsprechend kürzen, sofern kein Unterversicherungsverzicht vereinbart wurde.</p>
+
+        <p>Informiere uns, wenn sich der Versicherungswert durch Neuanschaffungen erhöht.</p>
+
+        <p>Prüfe mindestens einmal jährlich die Angemessenheit der Versicherungssumme, wobei in der Regel der Neuwert entscheidend ist.</p>
+
+        <p>Beachte gesetzliche und behördliche Vorschriften, insbesondere in der gewerblichen Feuerversicherung die Prüfung elektrischer Anlagen und Brandschutzvorschriften.</p>
+
+        <p>Melde Leerstand oder Nutzungsänderungen unverzüglich.</p>
+
+        <p>Sorge dafür, dass vereinbarte Einbruchdiebstahlsicherungen angewendet werden und funktionsfähig sind.</p>
+
+        <p>Du musst die Schadenhöhe nachweisen. Bewahre daher insbesondere bei höherwertigen Gegenständen Rechnungen auf oder fertige geeignete Nachweise wie Fotos an.</p>
+
+        <p>Wir empfehlen, ein Video deines gesamten Hausrats aufzunehmen und außerhalb des Versicherungsortes zu sichern, beispielsweise in einer Cloud, einschließlich Keller- und Nebenräumen. Auf Wunsch speichern wir diese Aufnahmen für dich.</p>
+
+        <p>In der gewerblichen Leitungswasserversicherung gilt für unter Erdgleiche gelagerte Waren in der Regel eine Lagerhöhe von etwa 12 bis 20 cm.</p>
+
+        <p>Beachte außerdem weitere Obliegenheiten gemäß den jeweiligen Versicherungsbedingungen.</p>
+    </div>
+
+    <!-- 9 ─ Kraftfahrtversicherung -->
+    <div class="section" id="kfz">
+        <p class="section-tag">Abschnitt 9</p>
+        <h2>Allgemeine Hinweise zur Kraftfahrtversicherung</h2>
+
+        <p>Mit der Zulassung besteht vorläufige Deckung nur für die Kraftfahrthaftpflichtversicherung. Für Kasko- und weitere Sparten gilt sie nur, wenn sie ausdrücklich bestätigt wurde.</p>
+
+        <p>Verkaufst du ein Fahrzeug, sorge dafür, dass es bei der Zulassungsstelle ab- oder umgemeldet wird. Andernfalls haftest du weiterhin für die Prämie und verursachte Schäden können deinen Schadenfreiheitsrabatt belasten.</p>
+
+        <p>Rabatte und Zuschläge, etwa für Jahreskilometerleistung, Fahrerkreis, Garage oder Beruf, sind Vertragsgrundlage. Entfallen die Voraussetzungen, musst du dies unverzüglich anzeigen, da sonst Vertragsstrafen möglich sind.</p>
+
+        <p>Bei Kaskoschäden beauftrage zunächst keinen eigenen Sachverständigen, sondern hole die Anweisungen des Versicherers ein.</p>
+    </div>
+
+</div>
+
+<!-- ─── FOOTER ─────────────────────────────────────── -->
+<footer>
+    <div class="footer-main">
+        <div>
+            <div class="footer-logo">
+                <img src="Bilder/LogoWeiss.png" alt="Stark Finanz">
+            </div>
+            <p class="footer-tagline">Reanimation. Auch für deine Finanzen.<br>Wir sind dein Vorsorgepartner in deinen Finanzthemen.</p>
+        </div>
+
+        <div class="footer-cols-right">
+            <div>
+                <p class="footer-col-title">Links</p>
+                <ul class="footer-links">
+                    <li><a href="basisinformation.html">Basisinformation<br>zu Versicherungen</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="footer-col-title">Kontakt</p>
+                <div class="footer-contact">
+                    <a href="mailto:philipp.stark@starkfinanz.de">philipp.stark@starkfinanz.de</a>
+                    <a href="tel:+4917679536745">+49 176 795 36745</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p class="footer-copy">&copy; 2026 Philipp Stark. Alle Rechte vorbehalten.</p>
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <a href="erstinformation.html">Erstinformation</a>
+                <a href="transparenzverordnung.html">Transparenzverordnung</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

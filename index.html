@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stark Finanz — Finanzberatung für Ärzte und medizinische Fachkräfte in Deutschland. Kein Fachwissen nötig, kein Druck, kein Produktverkauf.">
+    <title>Stark Finanz — Finanzberatung für medizinische Fachkräfte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:       #0d1f3c;
+            --navy-dark:  #07111f;
+            --navy-mid:   #1a3459;
+            --accent:     #1d5bb5;
+            --accent-l:   #9bbcf0;
+            --white:      #ffffff;
+            --off-white:  #f4f6fa;
+            --border:     #dde4ee;
+            --text:       #0d1f3c;
+            --text-2:     #4a5e78;
+            --text-muted: #8096b0;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+        }
+
+        img { display: block; max-width: 100%; }
+        a   { text-decoration: none; }
+
+        /* ─── UTILITIES ──────────────────────────── */
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .section-label {
+            font-size: 0.725rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-label--dim  { color: rgba(255,255,255,0.4); }
+
+        .section-headline {
+            font-size: clamp(1.98rem, 3.6vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.038em;
+            line-height: 1.18;
+            color: var(--navy);
+        }
+
+        .section-headline--white { color: var(--white); }
+
+        .section-sub {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.72;
+            margin-top: 0.85rem;
+        }
+
+        /* ─── BUTTONS ────────────────────────────── */
+
+        .btn {
+            display: inline-block;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.775rem;
+            transition: opacity 0.18s ease, background 0.18s ease;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .btn--navy {
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.42rem 1.1rem;
+            border: 1.5px solid transparent;
+        }
+        .btn--navy:hover { background: var(--navy-mid); }
+
+        .btn--navy-outline {
+            background: transparent;
+            color: var(--navy);
+            padding: 0.42rem 1.1rem;
+            border: 1.5px solid var(--navy);
+        }
+        .btn--navy-outline:hover { background: rgba(13,31,60,0.06); }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .btn--navy-lg {
+            background: var(--navy);
+            color: var(--white);
+            padding: 0.88rem 2.1rem;
+            font-size: 1rem;
+        }
+        .btn--navy-lg:hover { background: var(--navy-mid); }
+
+        .btn--accent {
+            background: #4a8fd4;
+            color: var(--white);
+            padding: 0.85rem 2.2rem;
+            font-size: 1rem;
+        }
+        .btn--accent:hover { background: #3a7dc2; }
+
+        .btn--white {
+            background: var(--white);
+            color: var(--navy);
+            padding: 0.88rem 2.25rem;
+            font-size: 1rem;
+        }
+        .btn--white:hover { opacity: 0.91; }
+
+        /* ─── NAV ────────────────────────────────── */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            height: 66px;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .btn--navy-outline {
+            transition: color 0.3s, border-color 0.3s, background 0.3s;
+        }
+
+        nav.nav-top .btn--navy-outline {
+            color: var(--white);
+            border-color: rgba(255,255,255,0.7);
+        }
+
+        nav.nav-top .btn--navy-outline:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        nav .btn--navy {
+            transition: background 0.3s, color 0.3s;
+        }
+
+        nav.nav-top .btn--navy {
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        nav.nav-top .btn--navy:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .nav-logo img {
+            height: 34px;
+            width: auto;
+        }
+
+        /* ─── HERO ───────────────────────────────── */
+
+        #hero {
+            min-height: 100vh;
+            background: url('Bilder/Wallpaper3.jpg') center / cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(7, 17, 45, 0.92) 0%,
+                rgba(7, 17, 45, 0.80) 55%,
+                rgba(7, 17, 45, 0.65) 100%
+            );
+            z-index: 0;
+        }
+
+        .hero-text {
+            max-width: 1100px;
+            padding: 5rem 0;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.725rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-l);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-headline {
+            font-size: clamp(3rem, 7.5vw, 6.5rem);
+            font-weight: 700;
+            line-height: 1.06;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            text-shadow: 0 2px 40px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2);
+            margin-bottom: 3rem;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero-sub {
+            font-size: 0.9375rem;
+            color: rgba(255,255,255,0.58);
+            line-height: 1.5;
+            margin-bottom: 2.75rem;
+            max-width: 520px;
+        }
+
+        /* ─── SUBLINE ────────────────────────────── */
+
+        #subline {
+            background: var(--off-white);
+            padding: 6.5rem 5%;
+            text-align: center;
+        }
+
+        .subline-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .subline-text {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-weight: 400;
+            color: var(--text-2);
+            line-height: 1.58;
+        }
+
+        /* ─── INTRO ──────────────────────────────── */
+
+        #intro {
+            background: var(--off-white);
+            padding: 7rem 5%;
+            text-align: center;
+        }
+
+        .intro-text {
+            max-width: 960px;
+            margin: 0 auto;
+            font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+            color: var(--text-2);
+            line-height: 1.45;
+            font-weight: 400;
+        }
+
+        /* ─── IST-SITUATION ──────────────────────── */
+
+        #situation {
+            background: var(--white);
+            padding: 8rem 5%;
+        }
+
+        .situation-header {
+            margin-bottom: 3.25rem;
+        }
+
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        .situation-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.85rem 1.75rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            cursor: default;
+        }
+
+        .situation-card:hover {
+            border-color: #b0bfd4;
+            box-shadow: 0 8px 28px rgba(13, 31, 60, 0.09);
+        }
+
+        .situation-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--navy);
+            margin-bottom: 1.1rem;
+            stroke-width: 1.6;
+        }
+
+        .situation-title {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.45rem;
+        }
+
+        .situation-desc {
+            font-size: 0.86rem;
+            color: var(--text-2);
+            line-height: 1.65;
+        }
+
+        /* ─── PROBLEM ────────────────────────────── */
+
+        #problem {
+            background: var(--white);
+            padding: 8rem 5%;
+        }
+
+        .problem-header {
+            margin-bottom: 3rem;
+        }
+
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.1rem;
+        }
+
+        @media (max-width: 860px) {
+            .problem-cards { grid-template-columns: 1fr; }
+        }
+
+        .problem-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem 2.25rem;
+            transition: border-color 0.2s;
+        }
+
+        .problem-card:hover { border-color: #b0c4de; }
+
+        .problem-q {
+            font-size: 1.0625rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+
+        .problem-a {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        /* ─── LEISTUNGEN ────────────────────────── */
+
+        #leistungen {
+            background: var(--off-white);
+            padding: 8rem 5%;
+        }
+
+        .leistungen-header {
+            margin-bottom: 3.25rem;
+        }
+
+        .leistungen-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .leistungen-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.85rem 1.75rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            cursor: default;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .leistungen-card:hover {
+            border-color: #b0bfd4;
+            box-shadow: 0 8px 28px rgba(13, 31, 60, 0.09);
+        }
+
+        .leistungen-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--off-white);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+
+        .leistungen-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--navy);
+            stroke-width: 1.6;
+        }
+
+        .leistungen-card-title {
+            font-size: 0.9375rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+        }
+
+        .leistungen-card-desc {
+            font-size: 0.86rem;
+            color: var(--text-2);
+            line-height: 1.65;
+        }
+
+        .leistungen-note {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.1rem 1.4rem;
+            display: flex;
+            gap: 0.85rem;
+            align-items: flex-start;
+        }
+
+        .leistungen-note svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: #1d5bb5;
+            margin-top: 0.1rem;
+        }
+
+        .leistungen-note p {
+            font-size: 0.84rem;
+            color: var(--text-2);
+            line-height: 1.65;
+        }
+
+        .leistungen-note strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        @media (max-width: 900px) {
+            .leistungen-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 560px) {
+            .leistungen-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ─── ZAHLEN ─────────────────────────────── */
+
+        #zahlen {
+            background: var(--navy);
+            padding: 8rem 5%;
+        }
+
+        .zahlen-header {
+            margin-bottom: 3rem;
+        }
+
+        .zahlen-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .zahlen-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            padding: 2.25rem 2.5rem;
+        }
+
+        .zahlen-age-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 0.15rem;
+        }
+
+        .zahlen-age-num {
+            font-size: clamp(1.5rem, 2.2vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: rgba(255,255,255,0.55);
+            line-height: 1;
+            margin-bottom: 0.85rem;
+        }
+
+        .zahlen-result {
+            font-size: clamp(2.5rem, 4vw, 3.25rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 0.7rem;
+        }
+
+        .zahlen-note {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.48);
+            line-height: 1.6;
+        }
+
+        .zahlen-footer {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            line-height: 1.65;
+        }
+
+        .zahlen-footer strong { color: var(--white); }
+
+        /* ─── ABLAUF ─────────────────────────────── */
+
+        #ablauf {
+            background: var(--off-white);
+            padding: 8rem 5%;
+        }
+
+        .ablauf-inner {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .ablauf-header {
+            margin-bottom: 3.5rem;
+        }
+
+        .ablauf-headline {
+            font-size: clamp(1.65rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.038em;
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 0.85rem;
+        }
+
+        .ablauf-header-sub {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        .ablauf-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            padding-top: 0;
+        }
+
+        .ablauf-step { text-align: left; }
+
+        .ablauf-icon {
+            width: 34px;
+            height: 34px;
+            color: var(--navy);
+            margin-bottom: 1.1rem;
+            stroke-width: 1.6;
+        }
+
+        .ablauf-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .ablauf-desc {
+            font-size: 0.875rem;
+            color: var(--text-2);
+            line-height: 1.68;
+        }
+
+        /* ─── ÜBER MICH ──────────────────────────── */
+
+        #ueber-mich {
+            background: var(--white);
+            padding: 0;
+            overflow: visible;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 560px 1fr;
+            gap: 0;
+            align-items: end;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text-col {
+            padding: 8rem 4rem 8rem 5%;
+        }
+
+        .about-photo {
+            align-self: end;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            margin-top: -12rem;
+        }
+
+        .about-photo img {
+            width: 100%;
+            max-width: 560px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            object-position: bottom;
+        }
+
+        .about-label { margin-bottom: 0.6rem; }
+
+        .about-founder {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 1.6rem;
+            margin-top: -1rem;
+        }
+
+        .about-headline {
+            font-size: clamp(1.65rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.038em;
+            line-height: 1.15;
+            color: var(--navy);
+            margin-bottom: 1.6rem;
+        }
+
+        .about-body p {
+            font-size: 1rem;
+            color: var(--text-2);
+            line-height: 1.78;
+            margin-bottom: 1rem;
+        }
+
+        .about-credential {
+            margin-top: 1.75rem;
+            padding-top: 1.1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ─── VERTRAUEN ──────────────────────────── */
+
+        #vertrauen {
+            background: var(--off-white);
+            padding: 8rem 5%;
+        }
+
+        .trust-stat {
+            margin-bottom: 3rem;
+        }
+
+        .trust-stat .num {
+            font-size: clamp(3rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .trust-stat .lbl {
+            font-size: 0.9rem;
+            color: var(--text-2);
+            margin-top: 0.35rem;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .testimonial {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem 2.1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 1.35rem;
+        }
+
+        .testimonial-author {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .testimonial-role {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .trust-badge {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 0.4rem 0.9rem;
+            background: var(--white);
+        }
+
+        /* ─── EINWÄNDE ───────────────────────────── */
+
+        #einwaende {
+            background: var(--off-white);
+            padding: 8rem 5%;
+        }
+
+        .einwaende-header {
+            margin-bottom: 3rem;
+        }
+
+        .objections {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .objection {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.85rem 2.25rem;
+            transition: border-color 0.2s;
+        }
+
+        .objection:hover { border-color: #b0c4de; }
+
+        .objection-q {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .objection-a {
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        @media (max-width: 860px) {
+            .objections { grid-template-columns: 1fr; }
+        }
+
+        /* ─── FAQ ────────────────────────────────── */
+
+        #faq {
+            background: var(--off-white);
+            padding: 8rem 5%;
+        }
+
+        .faq-header {
+            margin-bottom: 3rem;
+        }
+
+        .faq-list {
+            max-width: 100%;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-item:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.35rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            gap: 1.25rem;
+        }
+
+        .faq-question:focus { outline: none; }
+
+        .faq-icon {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: transform 0.25s ease;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.32s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+        }
+
+        .faq-answer-inner {
+            padding-bottom: 1.4rem;
+            font-size: 0.9375rem;
+            color: var(--text-2);
+            line-height: 1.72;
+        }
+
+        /* ─── APP SECTION ───────────────────────── */
+
+        #app-section {
+            background: var(--navy-dark);
+            padding: 9rem 5%;
+            text-align: center;
+        }
+
+        .app-headline {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.045em;
+            line-height: 1.08;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .app-sub {
+            font-size: 1.0625rem;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.75;
+            max-width: 580px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 0.85rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        .btn--white-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.45);
+            padding: 0.88rem 2.25rem;
+            font-size: 1rem;
+        }
+        .btn--white-outline:hover { border-color: rgba(255,255,255,0.8); }
+
+        /* app section layout */
+        .app-inner {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
+            text-align: left;
+        }
+
+        .app-inner .app-headline,
+        .app-inner .app-sub {
+            text-align: left;
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .app-inner .app-buttons {
+            justify-content: flex-start;
+        }
+
+        /* phone mockup */
+        .phone {
+            width: 300px;
+            flex-shrink: 0;
+            background: #0c1829;
+            border-radius: 44px;
+            border: 2px solid rgba(255,255,255,0.13);
+            box-shadow: 0 48px 120px rgba(0,0,0,0.65), inset 0 0 0 1px rgba(255,255,255,0.03);
+            overflow: hidden;
+        }
+
+        .phone-status {
+            height: 46px;
+            background: #0c1829;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+            position: relative;
+        }
+
+        .phone-island {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 96px;
+            height: 26px;
+            background: #000;
+            border-radius: 50px;
+        }
+
+        .phone-status-time {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .phone-status-icons {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .phone-status-icons svg {
+            width: 13px;
+            height: 13px;
+            fill: rgba(255,255,255,0.8);
+        }
+
+        .phone-body {
+            background: #111e35;
+        }
+
+        .phone-header {
+            padding: 0.85rem 1.1rem 0.7rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .phone-app-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #fff;
+            letter-spacing: -0.03em;
+        }
+
+        .phone-summary-pill {
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 0.25rem 0.6rem;
+            white-space: nowrap;
+        }
+
+        .phone-section-label {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+            padding: 0.25rem 1.1rem 0.5rem;
+        }
+
+        .phone-contract {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 0.6rem 1.1rem;
+            border-top: 1px solid rgba(255,255,255,0.045);
+        }
+
+        .phone-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        .phone-contract-info { flex: 1; min-width: 0; }
+
+        .phone-contract-company {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.88);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .phone-contract-type {
+            font-size: 0.67rem;
+            color: rgba(255,255,255,0.32);
+            margin-top: 1px;
+        }
+
+        .phone-contract-right { text-align: right; flex-shrink: 0; }
+
+        .phone-contract-amount {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.82);
+        }
+
+        .phone-badge {
+            font-size: 0.58rem;
+            font-weight: 700;
+            padding: 0.1rem 0.35rem;
+            border-radius: 4px;
+            margin-top: 2px;
+            display: inline-block;
+        }
+
+        .phone-badge--green {
+            color: #4cc68d;
+            background: rgba(76,198,141,0.13);
+        }
+
+        .phone-badge--blue {
+            color: #6baaf0;
+            background: rgba(107,170,240,0.13);
+        }
+
+        .phone-home {
+            height: 30px;
+            background: #0c1829;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-home-bar {
+            width: 108px;
+            height: 4px;
+            background: rgba(255,255,255,0.22);
+            border-radius: 99px;
+        }
+
+        @media (max-width: 780px) {
+            .app-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .app-inner .app-headline,
+            .app-inner .app-sub { text-align: center; margin: 0 auto; }
+            .app-inner .app-buttons { justify-content: center; }
+            .phone { margin: 0 auto; }
+        }
+
+        /* ─── CTA ────────────────────────────────── */
+
+        #cta {
+            background: var(--navy);
+            padding: 9rem 5%;
+            text-align: center;
+        }
+
+        .cta-headline {
+            font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: 1.1rem;
+        }
+
+        .cta-sub {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            max-width: 480px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        /* ─── FOOTER ─────────────────────────────── */
+
+        footer {
+            background: var(--navy-dark);
+            padding: 0 5%;
+        }
+
+        .footer-main {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 4.5rem 0 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-cols-right {
+            display: flex;
+            justify-content: flex-end;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .footer-logo img {
+            height: 36px;
+            width: auto;
+            margin-bottom: 0.25rem;
+            margin-left: -0.75rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-links { list-style: none; }
+
+        .footer-links li { margin-bottom: 0.65rem; }
+
+        .footer-links a {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.38);
+            transition: color 0.18s;
+            line-height: 1.35;
+        }
+
+        .footer-links a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-contact {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.38);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-contact a {
+            color: rgba(255,255,255,0.38);
+            transition: color 0.18s;
+        }
+
+        .footer-contact a:hover { color: rgba(255,255,255,0.72); }
+
+        .footer-socials {
+            display: flex;
+            gap: 0.7rem;
+            margin-top: 1.4rem;
+        }
+
+        .footer-socials a {
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.38);
+            transition: border-color 0.18s, color 0.18s;
+        }
+
+        .footer-socials a:hover {
+            border-color: rgba(255,255,255,0.45);
+            color: rgba(255,255,255,0.75);
+        }
+
+        .footer-socials svg { width: 15px; height: 15px; }
+
+        .footer-bottom-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1.4rem 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-copy {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            white-space: nowrap;
+        }
+
+        .footer-legal { display: flex; gap: 1rem; }
+
+        .footer-legal a {
+            font-size: 0.775rem;
+            color: rgba(255,255,255,0.22);
+            transition: color 0.18s;
+        }
+
+        .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+        /* ─── RESPONSIVE ─────────────────────────── */
+
+        @media (max-width: 860px) {
+            .situation-grid { grid-template-columns: repeat(2, 1fr); }
+            .zahlen-grid    { grid-template-columns: 1fr; }
+            .ablauf-steps   { grid-template-columns: 1fr; gap: 2rem; }
+            .leistungen-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .about-grid { grid-template-columns: 1fr; }
+            .about-text-col { padding: 4rem 5%; }
+            .about-photo { justify-content: flex-start; padding: 0 5%; }
+            .about-photo img { max-width: 280px; }
+
+            .app-inner { grid-template-columns: 1fr; text-align: center; }
+            .app-inner .app-headline,
+            .app-inner .app-sub { text-align: center; margin: 0 auto; }
+            .app-inner .app-buttons { justify-content: center; }
+            .phone { margin: 0 auto; }
+
+            .footer-main { grid-template-columns: 1fr; gap: 2.25rem; padding-bottom: 2rem; }
+            .footer-cols-right { justify-content: flex-start; }
+        }
+
+        @media (max-width: 560px) {
+            #subline { padding: 4rem 5%; }
+            #intro { padding: 4rem 5%; }
+            #situation, #leistungen, #ablauf, #zahlen,
+            #ueber-mich, #faq, #cta { padding: 4rem 5%; }
+            #app-section { padding: 4rem 5%; }
+
+            .situation-grid { grid-template-columns: 1fr; }
+            .leistungen-grid { grid-template-columns: 1fr; }
+            .zahlen-grid { grid-template-columns: 1fr; }
+
+            .hero-text { padding: 3.5rem 0; }
+
+            .nav-actions .btn { padding: 0.35rem 0.75rem; font-size: 0.75rem; }
+
+            .intro-text { font-size: 1.1rem; line-height: 1.5; }
+
+            .about-text-col { padding: 2.5rem 5%; }
+            .about-photo img { max-width: 100%; }
+
+            .footer-legal { gap: 0.5rem; flex-wrap: wrap; }
+            .footer-legal a { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────── -->
+<nav>
+    <a href="#" class="nav-logo">
+        <img id="nav-logo-img" src="Bilder/LogoWeiss.png" alt="Stark Finanz">
+    </a>
+    <div class="nav-actions">
+        <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn btn--navy-outline" target="_blank" rel="noopener">Kundenportal</a>
+        <a href="https://kontaktformular-gules.vercel.app" class="btn btn--navy">Gespräch vereinbaren</a>
+    </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────── -->
+<section id="hero">
+    <div class="container">
+        <div class="hero-text">
+            <p class="hero-eyebrow">Finanzberatung für medizinische Fachkräfte</p>
+            <h1 class="hero-headline" id="hero-headline">Visite. Auch für<br>deine Finanzen.</h1>
+            <a href="https://kontaktformular-gules.vercel.app" class="btn btn--accent">Gespräch vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+<!-- ─── INTRO ────────────────────────────────────── -->
+<section id="intro">
+    <p class="intro-text">Wir helfen Ärztinnen, Ärzten und Pflegekräften, ihre Finanzen so aufzustellen, dass sie im Alltag kein Thema mehr sind.<br>Einfach erklärt. Oder komplett für dich übernommen.</p>
+</section>
+
+<!-- ─── IST-SITUATION ─────────────────────────────── -->
+<section id="situation">
+    <div class="container">
+        <div class="situation-header">
+            <p class="section-label">Wir verstehen, wo du stehst</p>
+            <h2 class="section-headline">Du sorgst täglich für andere.<br>Wer sorgt für dich?</h2>
+            <p class="section-sub">Das ändert sich mit dem richtigen Ansprechpartner.</p>
+        </div>
+        <div class="situation-grid">
+
+            <div class="situation-card">
+                <svg class="situation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <p class="situation-title">Nach dem Dienst fehlt<br>die Energie für Finanzen</p>
+                <p class="situation-desc">Genau dann kommen wir ins Spiel.</p>
+            </div>
+
+            <div class="situation-card">
+                <svg class="situation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+                </svg>
+                <p class="situation-title">Finanzen wurden dir<br>nie richtig erklärt</p>
+                <p class="situation-desc">Bei uns keine Begriffe, die du googeln musst.</p>
+            </div>
+
+            <div class="situation-card">
+                <svg class="situation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><polyline points="9 16 11 18 15 14"/>
+                </svg>
+                <p class="situation-title">Dein Plan von damals<br>passt vielleicht nicht mehr</p>
+                <p class="situation-desc">Vieles ändert sich. Wir schauen, ob noch alles zusammenpasst.</p>
+            </div>
+
+            <div class="situation-card">
+                <svg class="situation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <p class="situation-title">Du schiebst es schon<br>eine Weile vor dir her</p>
+                <p class="situation-desc">Fast alle tun das. Der Unterschied ist oft nur: Wer fängt irgendwann an.</p>
+            </div>
+
+            <div class="situation-card">
+                <svg class="situation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+                <p class="situation-title">Du willst konkret wissen,<br>wo du stehst</p>
+                <p class="situation-desc">Was habe ich, was fehlt, was ist der nächste Schritt. Das bekommst du nach dem ersten Gespräch.</p>
+            </div>
+
+            <div class="situation-card">
+                <svg class="situation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <p class="situation-title">Du willst dich auf<br>deinen Job konzentrieren</p>
+                <p class="situation-desc">Wir nehmen dir Finanzen vom Tisch. Du behältst nur den Überblick, wo es zählt.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── LEISTUNGEN ───────────────────────────────────── -->
+<section id="leistungen">
+    <div class="container">
+        <div class="leistungen-header">
+            <p class="section-label">Was wir für dich tun</p>
+            <h2 class="section-headline">Die Themen, die<br>wirklich zählen.</h2>
+            <p class="section-sub">Nicht alles auf einmal. Aber das Richtige zur richtigen Zeit.</p>
+        </div>
+
+        <div class="leistungen-grid">
+
+            <div class="leistungen-card">
+                <div class="leistungen-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/>
+                    </svg>
+                </div>
+                <p class="leistungen-card-title">Steuern sparen</p>
+                <p class="leistungen-card-desc">bAV, Rürup, vermögenswirksame Leistungen. Wir zeigen dir, welche Hebel sich für dich lohnen.</p>
+            </div>
+
+            <div class="leistungen-card">
+                <div class="leistungen-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                </div>
+                <p class="leistungen-card-title">Rentenlücke schließen</p>
+                <p class="leistungen-card-desc">Über der Beitragsbemessungsgrenze? Dann klafft die Lücke im Alter besonders groß. Wir rechnen sie dir aus.</p>
+            </div>
+
+            <div class="leistungen-card">
+                <div class="leistungen-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/>
+                    </svg>
+                </div>
+                <p class="leistungen-card-title">Vermögen aufbauen</p>
+                <p class="leistungen-card-desc">ETF-Sparpläne, Immobilien, Aktien. Langfristig und strukturiert, nicht auf gut Glück.</p>
+            </div>
+
+            <div class="leistungen-card">
+                <div class="leistungen-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <p class="leistungen-card-title">Absicherung</p>
+                <p class="leistungen-card-desc">Berufsunfähigkeit, private Krankenversicherung, Haftpflicht. Was du brauchst, ohne was du nicht brauchst.</p>
+            </div>
+
+        </div>
+
+        <div class="leistungen-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <p><strong>Hinweis:</strong> Wir beraten zu Finanzprodukten, keine Steuerberatung. Bei steuerlichen Fragen arbeiten wir mit deinem Steuerberater zusammen oder vermitteln dir einen passenden Ansprechpartner.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ─── ZAHLEN ─────────────────────────────────────── -->
+<section id="zahlen">
+    <div class="container">
+        <div class="zahlen-header">
+            <p class="section-label section-label--dim">Deine Versorgungslücke</p>
+            <h2 class="section-headline section-headline--white">Du rettest Leben.<br>Wir retten deine Altersvorsorge.</h2>
+        </div>
+        <div class="zahlen-grid">
+            <div class="zahlen-card">
+                <p class="zahlen-age-label">Beginn mit</p>
+                <p class="zahlen-age-num">35</p>
+                <p class="zahlen-result">350 &euro; / Monat</p>
+                <p class="zahlen-note">Wer mit 35 anfängt, braucht rund 350 Euro monatlich, um eine Versorgungslücke von 1.000 Euro im Alter zu schließen.</p>
+            </div>
+            <div class="zahlen-card">
+                <p class="zahlen-age-label">Beginn mit</p>
+                <p class="zahlen-age-num">50</p>
+                <p class="zahlen-result">1.100 &euro; / Monat</p>
+                <p class="zahlen-note">Wer mit 50 anfängt, braucht rund 1.100 Euro monatlich. Für exakt dasselbe Ergebnis im Alter.</p>
+            </div>
+        </div>
+        <p class="zahlen-footer">Selbe Lücke zu schließen. <strong>Dreimal so hohe Sparrate.</strong> Der Unterschied war nur der Zeitpunkt.</p>
+    </div>
+</section>
+
+<!-- ─── ABLAUF ─────────────────────────────────────── -->
+<section id="ablauf">
+    <div class="ablauf-inner">
+        <div class="ablauf-header">
+            <p class="section-label">So läuft das ab</p>
+            <h2 class="ablauf-headline">Du weißt, wie wichtig Vorsorge ist.<br>Wir setzen sie um.</h2>
+        </div>
+        <div class="ablauf-steps">
+            <div class="ablauf-step">
+                <svg class="ablauf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                </svg>
+                <p class="ablauf-title">Du erzählst. Wir hören zu.</p>
+                <p class="ablauf-desc">Wir sprechen über deine aktuelle Situation. Was du hast, was du dir wünschst, was dich beschäftigt. Kein Test, kein Formular, kein Vorwissen nötig.</p>
+            </div>
+            <div class="ablauf-step">
+                <svg class="ablauf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                </svg>
+                <p class="ablauf-title">Du bekommst eine ehrliche Einschätzung.</p>
+                <p class="ablauf-desc">Wir zeigen dir, wo du wirklich stehst. Was fehlt, was bereits gut aufgestellt ist und was konkret zu tun wäre. Klar formuliert, ohne Produktkatalog.</p>
+            </div>
+            <div class="ablauf-step">
+                <svg class="ablauf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+                <p class="ablauf-title">Du entscheidest, wie es weitergeht.</p>
+                <p class="ablauf-desc">Ob wir zusammenarbeiten, liegt allein bei dir. Kein Folgetermin, den du nicht wolltest. Keine Verpflichtung aus dem Gespräch heraus.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── ÜBER MICH ──────────────────────────────────── -->
+<section id="ueber-mich">
+    <div class="about-grid">
+        <div class="about-photo">
+            <img src="Bilder/Transparent.png" alt="Philipp Stark">
+        </div>
+        <div class="about-text-col">
+            <p class="section-label about-label">Über uns</p>
+            <h2 class="about-headline">Ich bin Philipp.</h2>
+            <p class="about-founder">Gründer von Stark Finanz</p>
+            <div class="about-body">
+<p>Wir haben gemerkt, dass viele unserer Kunden nicht deshalb nichts getan haben, weil sie es nicht wollten. Sondern weil der Alltag es schlicht nicht zugelassen hat. Das verstehen wir. Und genau da setzen wir an.</p>
+                <p>Langfristige Zusammenarbeit verlangt Ehrlichkeit und Klarheit. Unser Anspruch ist es, dir eine Perspektive zu eröffnen, die weit über klassische Bankfloskeln, oberflächliche Finanzkurse oder Social-Media-Geldtipps hinausgeht.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── APP SECTION ───────────────────────────────── -->
+<section id="app-section">
+    <div class="container">
+        <div class="app-inner">
+        <div>
+        <p class="section-label section-label--dim">Finanzmanager</p>
+        <h2 class="app-headline">Du kennst Befunde.<br>Wir kennen Verträge.</h2>
+        <p class="app-sub">Unsere Kunden bekommen Zugang zum Finanzmanager. Eine App, in der alle Verträge gebündelt sind. Versicherungen, Investments, Baufinanzierung, Strom und Gas. Alles an einem Ort, jederzeit abrufbar.</p>
+        <div class="app-buttons">
+            <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn btn--white" target="_blank" rel="noopener">Login</a>
+            <a href="https://www.youtube.com/watch?v=xGTCqoMftCM" class="btn btn--white-outline" target="_blank" rel="noopener">Anleitung</a>
+        </div>
+        </div>
+
+        <!-- phone mockup -->
+        <div class="phone">
+
+            <!-- status bar -->
+            <div class="phone-status">
+                <span class="phone-status-time">9:41</span>
+                <div class="phone-island"></div>
+                <div class="phone-status-icons">
+                    <!-- signal -->
+                    <svg viewBox="0 0 24 24"><rect x="1" y="15" width="3" height="6" rx="1"/><rect x="6" y="11" width="3" height="10" rx="1"/><rect x="11" y="7" width="3" height="14" rx="1"/><rect x="16" y="3" width="3" height="18" rx="1" opacity=".3"/></svg>
+                    <!-- wifi -->
+                    <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+                    <!-- battery -->
+                    <svg viewBox="0 0 24 24"><rect x="2" y="7" width="18" height="10" rx="2" ry="2"/><path d="M22 11v2"/><rect x="3" y="8" width="14" height="8" rx="1" fill="rgba(255,255,255,0.8)" stroke="none"/></svg>
+                </div>
+            </div>
+
+            <!-- app body -->
+            <div class="phone-body">
+
+                <div class="phone-header">
+                    <span class="phone-app-title">Meine Verträge</span>
+                    <span class="phone-summary-pill">8 aktiv · 856 €/Mo</span>
+                </div>
+
+                <!-- Versicherungen -->
+                <div class="phone-section-label">Versicherung</div>
+
+                <div class="phone-contract">
+                    <div class="phone-logo" style="background:#1b4f9c;">AL</div>
+                    <div class="phone-contract-info">
+                        <div class="phone-contract-company">Allianz</div>
+                        <div class="phone-contract-type">Haftpflichtversicherung</div>
+                    </div>
+                    <div class="phone-contract-right">
+                        <div class="phone-contract-amount">8,90 €/Mo</div>
+                        <span class="phone-badge phone-badge--green">aktiv</span>
+                    </div>
+                </div>
+
+                <div class="phone-contract">
+                    <div class="phone-logo" style="background:#9c1b1b;">AX</div>
+                    <div class="phone-contract-info">
+                        <div class="phone-contract-company">AXA</div>
+                        <div class="phone-contract-type">Berufsunfähigkeit</div>
+                    </div>
+                    <div class="phone-contract-right">
+                        <div class="phone-contract-amount">89,50 €/Mo</div>
+                        <span class="phone-badge phone-badge--green">aktiv</span>
+                    </div>
+                </div>
+
+                <div class="phone-contract">
+                    <div class="phone-logo" style="background:#b03a00;">RV</div>
+                    <div class="phone-contract-info">
+                        <div class="phone-contract-company">R+V</div>
+                        <div class="phone-contract-type">KFZ-Versicherung</div>
+                    </div>
+                    <div class="phone-contract-right">
+                        <div class="phone-contract-amount">67,20 €/Mo</div>
+                        <span class="phone-badge phone-badge--green">aktiv</span>
+                    </div>
+                </div>
+
+                <div class="phone-contract">
+                    <div class="phone-logo" style="background:#1a6b4a;">TK</div>
+                    <div class="phone-contract-info">
+                        <div class="phone-contract-company">Techniker Krankenkasse</div>
+                        <div class="phone-contract-type">Krankenversicherung</div>
+                    </div>
+                    <div class="phone-contract-right">
+                        <div class="phone-contract-amount">436,00 €/Mo</div>
+                        <span class="phone-badge phone-badge--green">aktiv</span>
+                    </div>
+                </div>
+
+                <!-- Investment -->
+                <div class="phone-section-label" style="margin-top:0.5rem;">Investment</div>
+
+                <div class="phone-contract">
+                    <div class="phone-logo" style="background:#1d5e8a;">DK</div>
+                    <div class="phone-contract-info">
+                        <div class="phone-contract-company">Deka</div>
+                        <div class="phone-contract-type">ETF-Sparplan</div>
+                    </div>
+                    <div class="phone-contract-right">
+                        <div class="phone-contract-amount">200,00 €/Mo</div>
+                        <span class="phone-badge phone-badge--blue">läuft</span>
+                    </div>
+                </div>
+
+                <!-- Energie -->
+                <div class="phone-section-label" style="margin-top:0.5rem;">Energie</div>
+
+                <div class="phone-contract" style="margin-bottom:0.4rem;">
+                    <div class="phone-logo" style="background:#7a4a0e;">SW</div>
+                    <div class="phone-contract-info">
+                        <div class="phone-contract-company">Stadtwerke Berlin</div>
+                        <div class="phone-contract-type">Strom &amp; Gas</div>
+                    </div>
+                    <div class="phone-contract-right">
+                        <div class="phone-contract-amount">54,00 €/Mo</div>
+                        <span class="phone-badge phone-badge--green">aktiv</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- home indicator -->
+            <div class="phone-home"><div class="phone-home-bar"></div></div>
+        </div>
+        </div><!-- /.app-inner -->
+    </div>
+</section>
+
+<!-- ─── FAQ ──────────────────────────────────────── -->
+<section id="faq">
+    <div class="container">
+        <div class="faq-header">
+            <p class="section-label">Häufige Fragen</p>
+            <h2 class="section-headline">Du hast den Kopf voll. Wir räumen ihn frei.</h2>
+        </div>
+        <div class="faq-list">
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Wie läuft das erste Gespräch ab?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Wir sprechen etwa 30 bis 45 Minuten. Du musst nichts vorbereiten und nichts mitbringen. Du erzählst uns, wo du gerade stehst und was dich beschäftigt. Am Ende weißt du, ob und was wir gemeinsam angehen könnten.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Was kostet eine Beratung?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Das erste Gespräch ist kostenlos und ohne jede Verpflichtung. Was danach folgt, besprechen wir gemeinsam und offen, bevor irgendetwas passiert.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Ich habe kaum Zeit. Wie aufwendig ist das für mich?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Das erste Gespräch dauert rund eine halbe Stunde. Danach übernehmen wir den Großteil der Arbeit. Du wirst nur an den Stellen einbezogen, wo wir deine Entscheidung brauchen. Den Rest regeln wir.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Für wen ist Stark Finanz gedacht?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">In erster Linie für Ärztinnen, Ärzte und Pflegekräfte in Deutschland. Menschen, die in einem anspruchsvollen Beruf arbeiten und für ihre eigene finanzielle Situation schlicht wenig Zeit und Energie übrig haben. Wenn du dich darin wiedererkennst, bist du richtig.</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Was ist der Unterschied zu meiner Hausbank?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Deine Bank berät dich mit dem, was sie anbietet. Wir sind an keine Institution gebunden und schauen deshalb breiter: Was passt wirklich zu dir, deiner Situation und deinen Zielen?</div>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <button class="faq-question">
+                    Was ist, wenn ich noch kaum etwas gespart habe?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">Dann ist genau jetzt der richtige Zeitpunkt. Nicht weil man das immer so sagt, sondern weil der Abstand zwischen dem, was du aufbauen könntest, und dem, was du bisher aufgebaut hast, mit jedem Monat ein bisschen größer wird. Wir starten dort, wo du gerade bist.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────── -->
+<section id="cta">
+    <div class="container">
+        <p class="section-label section-label--dim">Nächster Schritt</p>
+        <h2 class="cta-headline">Fang heute an zu wissen, wo du stehst.</h2>
+        <p class="cta-sub">Ein Gespräch, keine Vorbereitung, kein Fachwissen. Du findest heraus, wo du stehst und was du als nächstes tun könntest.</p>
+        <a href="https://kontaktformular-gules.vercel.app" class="btn btn--white">Gespräch vereinbaren &rarr;</a>
+    </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer>
+    <div class="footer-main">
+
+        <div>
+            <div class="footer-logo">
+                <img src="Bilder/LogoWeiss.png" alt="Stark Finanz">
+            </div>
+            <p class="footer-tagline">Reanimation. Auch für deine Finanzen.<br>Wir sind dein Vorsorgepartner in deinen Finanzthemen.</p>
+        </div>
+
+        <div class="footer-cols-right">
+            <div>
+                <p class="footer-col-title">Links</p>
+                <ul class="footer-links">
+                    <li><a href="basisinformation.html">Basisinformation<br>zu Versicherungen</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="footer-col-title">Kontakt</p>
+                <div class="footer-contact">
+                    <a href="mailto:philipp.stark@starkfinanz.de">philipp.stark@starkfinanz.de</a>
+                    <a href="tel:+4917679536745">+49 176 795 36745</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-bottom-inner">
+            <p class="footer-copy">&copy; 2026 Philipp Stark. Alle Rechte vorbehalten.</p>
+            <div class="footer-legal">
+                <a href="impressum.html">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <a href="erstinformation.html">Erstinformation</a>
+                <a href="transparenzverordnung.html">Transparenzverordnung</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        });
+    });
+
+
+
+    // hero headline rotator
+    const heroHeadline = document.getElementById('hero-headline');
+    const heroTexts = [
+        'Visite. Auch für<br>deine Finanzen.',
+        'Schichtplan?<br>Finanzplan.',
+        'Der wichtigste<br>Patient. Du selbst.'
+    ];
+    let heroIndex = 0;
+    setInterval(() => {
+        heroHeadline.style.opacity = '0';
+        setTimeout(() => {
+            heroIndex = (heroIndex + 1) % heroTexts.length;
+            heroHeadline.innerHTML = heroTexts[heroIndex];
+            heroHeadline.style.opacity = '1';
+        }, 500);
+    }, 7000);
+
+    // nav transparency
+    const navEl = document.querySelector('nav');
+    const logoImg = document.getElementById('nav-logo-img');
+    function updateNav() {
+        if (window.scrollY > 10) {
+            navEl.classList.add('scrolled');
+            navEl.classList.remove('nav-top');
+            logoImg.src = 'Bilder/LogoFarbe.png';
+        } else {
+            navEl.classList.remove('scrolled');
+            navEl.classList.add('nav-top');
+            logoImg.src = 'Bilder/LogoWeiss.png';
+        }
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // phone parallax
+    const phone = document.querySelector('.phone');
+    const appSection = document.getElementById('app-section');
+    if (phone && appSection) {
+        function updatePhone() {
+            const rect = appSection.getBoundingClientRect();
+            const offset = (rect.top + rect.height / 2) - window.innerHeight / 2;
+            phone.style.transform = `translateY(${offset * 0.1}px)`;
+        }
+        window.addEventListener('scroll', updatePhone, { passive: true });
+        updatePhone();
+    }
+</script>
+
+</body>
+</html>
