@@ -202,7 +202,7 @@
             border: none;
             cursor: pointer;
             padding: 4px;
-            z-index: 201;
+            z-index: 301;
         }
 
         .burger span {
@@ -214,39 +214,95 @@
             transition: background 0.3s, transform 0.3s, opacity 0.3s;
         }
 
-        nav.scrolled .burger span,
-        nav.burger-open .burger span {
-            background: var(--navy);
-        }
+        nav.scrolled .burger span { background: var(--navy); }
+        .burger.open span { background: var(--white) !important; }
 
         .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .burger.open span:nth-child(2) { opacity: 0; }
         .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+        /* Blur overlay behind menu */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 298;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.45);
+        }
+
+        .mobile-overlay.open { display: block; }
+
+        /* Menu card */
         .mobile-menu {
             display: none;
             position: fixed;
-            top: 66px;
-            left: 0;
-            right: 0;
-            background: rgba(255,255,255,0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 1.5rem 5%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.96);
+            width: calc(100% - 3rem);
+            max-width: 400px;
+            background: rgba(18, 18, 18, 0.92);
+            border-radius: 20px;
+            padding: 2rem 1.75rem 2rem;
             flex-direction: column;
-            gap: 0.75rem;
-            z-index: 199;
+            align-items: center;
+            gap: 0;
+            z-index: 299;
+            opacity: 0;
+            transition: opacity 0.25s ease, transform 0.25s ease;
         }
 
-        .mobile-menu.open { display: flex; }
+        .mobile-menu.open {
+            display: flex;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
 
-        .mobile-menu .btn {
+        .mobile-menu-link {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            padding: 1rem 0;
             width: 100%;
             text-align: center;
-            justify-content: center;
-            padding: 0.85rem 1rem;
-            font-size: 0.9rem;
+            transition: color 0.18s;
+        }
+
+        .mobile-menu-link:hover { color: var(--white); }
+
+        .mobile-menu-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .mobile-menu .btn--cta {
+            margin-top: 1.5rem;
+            width: 100%;
+            text-align: center;
+            padding: 1rem 1.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 14px;
+            background: #4a8fd4;
+            color: var(--white);
+            border: none;
+        }
+
+        .mobile-menu .btn--secondary {
+            margin-top: 0.65rem;
+            width: 100%;
+            text-align: center;
+            padding: 0.85rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.75);
+            border: none;
         }
 
         /* ─── HERO ───────────────────────────────── */
@@ -1347,14 +1403,9 @@
         }
 
         @media (max-width: 768px) {
-            /* Nav buttons smaller on mobile */
-            .nav-actions { display: flex; gap: 0.4rem; }
-            .burger { display: none; }
-            .nav-actions .btn {
-                padding: 0.3rem 0.65rem;
-                font-size: 0.72rem;
-                border-radius: 6px;
-            }
+            /* Burger: hide desktop buttons, show burger */
+            .nav-actions { display: none; }
+            .burger { display: flex; }
 
             /* Hide all <br> in headlines — let text wrap naturally */
             .section-headline br,
@@ -1452,9 +1503,15 @@
     </button>
 </nav>
 
+<div class="mobile-overlay" id="mobile-overlay"></div>
 <div class="mobile-menu" id="mobile-menu">
-    <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn btn--navy-outline" target="_blank" rel="noopener">Kundenportal</a>
-    <a href="https://kontaktformular-gules.vercel.app" class="btn btn--navy">Gespräch vereinbaren</a>
+    <a href="#" class="mobile-menu-link" data-close>Home</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="#faq" class="mobile-menu-link" data-close>FAQ</a>
+    <div class="mobile-menu-divider"></div>
+    <a href="#situation" class="mobile-menu-link" data-close>Leistungen</a>
+    <a href="https://kontaktformular-gules.vercel.app" class="btn--cta" target="_blank" rel="noopener">Gespräch vereinbaren</a>
+    <a href="https://meine-finanzen.digital/anmelden/m/ebb7aec0-e964-11ef-b903-960000d203a8" class="btn--secondary" target="_blank" rel="noopener">Kundenportal</a>
 </div>
 
 <!-- ─── HERO ─────────────────────────────────────── -->
@@ -1960,18 +2017,33 @@
     // burger menu
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    if (burgerBtn && mobileMenu) {
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
+    function closeMenu() {
+        mobileMenu.classList.remove('open');
+        mobileOverlay.classList.remove('open');
+        burgerBtn.classList.remove('open');
+    }
+
+    function openMenu() {
+        mobileMenu.classList.add('open');
+        mobileOverlay.classList.add('open');
+        burgerBtn.classList.add('open');
+    }
+
+    if (burgerBtn) {
         burgerBtn.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.toggle('open');
-            burgerBtn.classList.toggle('open', isOpen);
-            document.querySelector('nav').classList.toggle('burger-open', isOpen);
+            mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
         });
-        mobileMenu.querySelectorAll('a').forEach(a => {
-            a.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-                burgerBtn.classList.remove('open');
-                document.querySelector('nav').classList.remove('burger-open');
-            });
+    }
+
+    if (mobileOverlay) {
+        mobileOverlay.addEventListener('click', closeMenu);
+    }
+
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('[data-close], .btn--cta, .btn--secondary').forEach(el => {
+            el.addEventListener('click', closeMenu);
         });
     }
 
