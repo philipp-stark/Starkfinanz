@@ -1347,9 +1347,14 @@
         }
 
         @media (max-width: 768px) {
-            /* Burger: hide desktop buttons, show burger */
-            .nav-actions { display: none; }
-            .burger { display: flex; }
+            /* Nav buttons smaller on mobile */
+            .nav-actions { display: flex; gap: 0.4rem; }
+            .burger { display: none; }
+            .nav-actions .btn {
+                padding: 0.3rem 0.65rem;
+                font-size: 0.72rem;
+                border-radius: 6px;
+            }
 
             /* Hide all <br> in headlines — let text wrap naturally */
             .section-headline br,
@@ -1358,14 +1363,14 @@
             .subline-text br { display: none; }
 
             /* Keep <br> in app headline */
-            #app-section { padding: 5rem 5%; }
             .app-sub { margin-bottom: 2.5rem; }
             .app-buttons { margin-top: 1rem; }
 
-            /* Section padding */
+            /* Section padding — 7% horizontal for tighter content width */
             #subline, #intro, #situation, #leistungen, #ablauf,
-            #zahlen, #ueber-mich, #faq, #cta { padding: 4rem 5%; }
-            #app-section { padding: 4rem 5%; }
+            #zahlen, #faq, #cta { padding: 4rem 7%; }
+            #app-section { padding: 5rem 7%; }
+            nav { padding: 0 7%; }
 
             /* Hero */
             .hero-text { padding: 3.5rem 0; }
@@ -1387,8 +1392,8 @@
             /* Intro text */
             .intro-text { font-size: 1.15rem; line-height: 1.5; }
 
-            /* Über uns: text first, image below, flush with next section */
-            #ueber-mich { overflow: hidden; }
+            /* Über uns: text first, image below, flush with bottom */
+            #ueber-mich { overflow: hidden; padding: 0; }
             .about-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto auto;
@@ -1401,28 +1406,32 @@
                 justify-content: center;
             }
             .about-photo img {
-                width: 75%;
-                max-width: 320px;
+                width: 88%;
+                max-width: 380px;
                 display: block;
                 margin: 0 auto;
             }
-            .about-text-col { order: 1; padding: 4rem 5% 2rem; }
+            .about-text-col { order: 1; padding: 4rem 7% 2rem; }
 
             /* App section spacing */
             .app-inner { gap: 2.5rem; }
             .app-inner > div { padding-bottom: 0; }
 
             /* Footer */
+            footer { padding: 0 7%; }
             .footer-main { padding: 2.5rem 0 1.5rem; }
             .footer-tagline br { display: block; }
             .footer-bottom-inner {
-                flex-direction: column;
+                flex-direction: column-reverse;
                 align-items: flex-start;
-                gap: 0.75rem;
+                gap: 1rem;
                 padding: 1.25rem 0;
             }
-            .footer-legal { gap: 0.6rem; flex-wrap: wrap; }
-            .footer-legal a { font-size: 0.775rem; }
+            .footer-legal {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .footer-legal a { font-size: 0.875rem; }
             .footer-copy { white-space: normal; }
         }
     </style>
